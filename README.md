@@ -146,3 +146,30 @@ The App Review Analyzer works like this:
   The app uses natural language processing to understand review text and organize
   it into meaningful insights, all presented in a user-friendly dashboard with
   charts and visualizations.
+
+
+  The app uses the app-store-scraper library to fetch data from the Apple App
+  Store. This library works by making structured API calls to retrieve app details,
+   reviews, and related information directly from Apple's systems. When you click
+  "Fetch Reviews," the backend makes these API calls to collect real user reviews.
+
+  Sentiment Distribution:
+  The Sentiment Distribution is a breakdown of how positive or negative the reviews
+   are:
+
+  - Positive Reviews (4-5 stars): Reviews where users are generally happy with the
+  app
+  - Neutral Reviews (3 stars): Reviews with mixed feelings or neither strong praise
+   nor criticism
+  - Negative Reviews (1-2 stars): Reviews where users express problems or
+  dissatisfaction
+
+  The app analyzes review text and star ratings using the natural.js library's
+  sentiment analyzer (specifically the AFINN lexicon). This tool assigns sentiment
+  scores to words and phrases to determine if text is positive, negative, or
+  neutral.
+
+  The distribution is displayed as a donut chart showing the percentage of reviews
+  in each category, giving you a quick visual understanding of how users generally
+  feel about the app. This helps identify if an app has significant problems that
+  create market opportunities.
