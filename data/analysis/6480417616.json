@@ -1,0 +1,241 @@
+{
+  "sentimentAnalysis": {
+    "positive": 67,
+    "negative": 107,
+    "neutral": 26,
+    "total": 200,
+    "averageScore": 2.575,
+    "sentimentRatio": 0.6261682242990654
+  },
+  "positiveThemes": [
+    {
+      "word": "calories",
+      "count": 26
+    },
+    {
+      "word": "great",
+      "count": 21
+    },
+    {
+      "word": "good",
+      "count": 20
+    },
+    {
+      "word": "food",
+      "count": 17
+    },
+    {
+      "word": "really",
+      "count": 17
+    },
+    {
+      "word": "weight",
+      "count": 12
+    },
+    {
+      "word": "simple",
+      "count": 11
+    },
+    {
+      "word": "love",
+      "count": 11
+    },
+    {
+      "word": "see",
+      "count": 11
+    },
+    {
+      "word": "macros",
+      "count": 10
+    },
+    {
+      "word": "lose",
+      "count": 9
+    },
+    {
+      "word": "amazing",
+      "count": 8
+    },
+    {
+      "word": "much",
+      "count": 8
+    },
+    {
+      "word": "small",
+      "count": 8
+    },
+    {
+      "word": "calorie",
+      "count": 8
+    },
+    {
+      "word": "best",
+      "count": 8
+    },
+    {
+      "word": "add",
+      "count": 8
+    },
+    {
+      "word": "burned",
+      "count": 7
+    },
+    {
+      "word": "many",
+      "count": 7
+    },
+    {
+      "word": "thing",
+      "count": 7
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "subscription",
+      "count": 56
+    },
+    {
+      "word": "free",
+      "count": 37
+    },
+    {
+      "word": "trial",
+      "count": 32
+    },
+    {
+      "word": "money",
+      "count": 28
+    },
+    {
+      "word": "refund",
+      "count": 27
+    },
+    {
+      "word": "calories",
+      "count": 24
+    },
+    {
+      "word": "paid",
+      "count": 23
+    },
+    {
+      "word": "work",
+      "count": 23
+    },
+    {
+      "word": "pay",
+      "count": 20
+    },
+    {
+      "word": "charged",
+      "count": 19
+    },
+    {
+      "word": "apple",
+      "count": 17
+    },
+    {
+      "word": "account",
+      "count": 17
+    },
+    {
+      "word": "support",
+      "count": 17
+    },
+    {
+      "word": "accurate",
+      "count": 15
+    },
+    {
+      "word": "service",
+      "count": 15
+    },
+    {
+      "word": "want",
+      "count": 14
+    },
+    {
+      "word": "customer",
+      "count": 14
+    },
+    {
+      "word": "doesn",
+      "count": 14
+    },
+    {
+      "word": "food",
+      "count": 14
+    },
+    {
+      "word": "log",
+      "count": 13
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "subscription",
+      "painPoint": "Users complain about \"subscription\" but it's not mentioned positively",
+      "count": 56,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "free",
+      "painPoint": "Users complain about \"free\" but it's not mentioned positively",
+      "count": 37,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "trial",
+      "painPoint": "Users complain about \"trial\" but it's not mentioned positively",
+      "count": 32,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "money",
+      "painPoint": "Users complain about \"money\" but it's not mentioned positively",
+      "count": 28,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "refund",
+      "painPoint": "Users complain about \"refund\" but it's not mentioned positively",
+      "count": 27,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "paid",
+      "painPoint": "Users complain about \"paid\" but it's not mentioned positively",
+      "count": 23,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "work",
+      "painPoint": "Users complain about \"work\" but it's not mentioned positively",
+      "count": 23,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "pay",
+      "painPoint": "Users complain about \"pay\" but it's not mentioned positively",
+      "count": 20,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "charged",
+      "painPoint": "Users complain about \"charged\" but it's not mentioned positively",
+      "count": 19,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "apple",
+      "painPoint": "Users complain about \"apple\" but it's not mentioned positively",
+      "count": 17,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Crashes when setting up the app\",\n    \"Issues with app timing out and not responding\",\n    \"Subscription/payment problems and lack of refund policy\",\n    \"Inaccurate calorie and macro calculations\",\n    \"Lack of user-friendly data logging and tracking features\",\n    \"Difficulty in canceling subscriptions and account management\"\n  ],\n  \"lovedFeatures\": [\n    \"Accurate calculation of macros based on BMR algorithm\",\n    \"User-friendly calorie tracking\",\n    \"Simple and minimalistic design\",\n    \"Food scanning feature\",\n    \"Integration with Apple Health (when functioning)\"\n  ],\n  \"marketGaps\": [\n    \"Improved subscription management and cancellation process\",\n    \"Enhanced customer support for billing and account issues\",\n    \"Better data visualization and analytics for long-term tracking and planning\"\n  ],\n  \"recommendations\": [\n    \"Implement more robust testing to address app crashes and bugs during setup and general usage\",\n    \"Revamp subscription and refund policies to be more transparent and user-friendly\",\n    \"Enhance calorie and macro calculation accuracy and improve food scanning capabilities\"\n  ]\n}\n```"
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-06T18:50:45.404Z"
+}
