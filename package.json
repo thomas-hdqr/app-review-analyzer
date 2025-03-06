@@ -1,0 +1,37 @@
+{
+  "name": "app-review-analyzer",
+  "version": "1.0.0",
+  "description": "A Node.js tool to scrape and analyze iOS app reviews to identify market gaps",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "app",
+    "reviews",
+    "ios",
+    "analysis",
+    "market-gap",
+    "indie-hacker"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "app-store-scraper": "^0.17.0",
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cli-progress": "^3.12.0",
+    "colors": "^1.4.0",
+    "commander": "^11.1.0",
+    "dotenv": "^16.3.1",
+    "inquirer": "^8.2.6",
+    "natural": "^6.10.4",
+    "node-cron": "^3.0.3",
+    "openai": "^4.20.1",
+    "wordcloud": "^1.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
