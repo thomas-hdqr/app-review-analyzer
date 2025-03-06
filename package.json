@@ -28,8 +28,7 @@
     "inquirer": "^8.2.6",
     "natural": "^6.10.4",
     "node-cron": "^3.0.3",
-    "openai": "^4.20.1",
-    "wordcloud": "^1.2.2"
+    "openai": "^4.20.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
