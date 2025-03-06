@@ -69,4 +69,4 @@ module.exports = {
   searchApps,
   getAppDetails,
   getSimilarApps
-}; 
+};

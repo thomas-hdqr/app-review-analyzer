@@ -1,5 +1,5 @@
 const natural = require('natural');
-const { Configuration, OpenAIApi } = require('openai');
+const { OpenAI } = require('openai');
 require('dotenv').config();
 
 // Initialize NLP tools
@@ -11,10 +11,9 @@ const TfIdf = natural.TfIdf;
 // Initialize OpenAI if API key is available
 let openai = null;
 if (process.env.OPENAI_API_KEY) {
-  const configuration = new Configuration({
+  openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   });
-  openai = new OpenAIApi(configuration);
 }
 
 /**
@@ -185,7 +184,7 @@ async function getAIInsights(reviews, positiveThemes, negativeThemes) {
       Format your response as JSON with these keys: painPoints, lovedFeatures, marketGaps, recommendations.
     `;
     
-    const response = await openai.createChatCompletion({
+    const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [
         { role: 'system', content: 'You are a product analyst specializing in mobile app reviews.' },
@@ -196,7 +195,7 @@ async function getAIInsights(reviews, positiveThemes, negativeThemes) {
     });
     
     // Parse the response
-    const content = response.data.choices[0].message.content;
+    const content = response.choices[0].message.content;
     try {
       // Try to parse as JSON
       return JSON.parse(content);
