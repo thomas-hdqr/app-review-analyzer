@@ -1,0 +1,241 @@
+{
+  "sentimentAnalysis": {
+    "positive": 130,
+    "negative": 45,
+    "neutral": 25,
+    "total": 200,
+    "averageScore": 3.875,
+    "sentimentRatio": 2.888888888888889
+  },
+  "positiveThemes": [
+    {
+      "word": "social",
+      "count": 55
+    },
+    {
+      "word": "media",
+      "count": 53
+    },
+    {
+      "word": "sec",
+      "count": 48
+    },
+    {
+      "word": "great",
+      "count": 46
+    },
+    {
+      "word": "apps",
+      "count": 42
+    },
+    {
+      "word": "much",
+      "count": 36
+    },
+    {
+      "word": "really",
+      "count": 35
+    },
+    {
+      "word": "life",
+      "count": 30
+    },
+    {
+      "word": "screen",
+      "count": 29
+    },
+    {
+      "word": "works",
+      "count": 26
+    },
+    {
+      "word": "phone",
+      "count": 25
+    },
+    {
+      "word": "instagram",
+      "count": 25
+    },
+    {
+      "word": "hours",
+      "count": 25
+    },
+    {
+      "word": "love",
+      "count": 23
+    },
+    {
+      "word": "scrolling",
+      "count": 21
+    },
+    {
+      "word": "open",
+      "count": 19
+    },
+    {
+      "word": "makes",
+      "count": 17
+    },
+    {
+      "word": "best",
+      "count": 17
+    },
+    {
+      "word": "helped",
+      "count": 16
+    },
+    {
+      "word": "back",
+      "count": 16
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "work",
+      "count": 17
+    },
+    {
+      "word": "free",
+      "count": 17
+    },
+    {
+      "word": "subscription",
+      "count": 11
+    },
+    {
+      "word": "really",
+      "count": 10
+    },
+    {
+      "word": "money",
+      "count": 10
+    },
+    {
+      "word": "lifetime",
+      "count": 9
+    },
+    {
+      "word": "want",
+      "count": 9
+    },
+    {
+      "word": "doesn",
+      "count": 9
+    },
+    {
+      "word": "apple",
+      "count": 9
+    },
+    {
+      "word": "well",
+      "count": 8
+    },
+    {
+      "word": "tried",
+      "count": 8
+    },
+    {
+      "word": "didn",
+      "count": 8
+    },
+    {
+      "word": "trial",
+      "count": 8
+    },
+    {
+      "word": "try",
+      "count": 8
+    },
+    {
+      "word": "find",
+      "count": 7
+    },
+    {
+      "word": "download",
+      "count": 7
+    },
+    {
+      "word": "features",
+      "count": 7
+    },
+    {
+      "word": "pay",
+      "count": 7
+    },
+    {
+      "word": "screen",
+      "count": 7
+    },
+    {
+      "word": "downloaded",
+      "count": 6
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "work",
+      "painPoint": "Users complain about \"work\" but it's not mentioned positively",
+      "count": 17,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "free",
+      "painPoint": "Users complain about \"free\" but it's not mentioned positively",
+      "count": 17,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "subscription",
+      "painPoint": "Users complain about \"subscription\" but it's not mentioned positively",
+      "count": 11,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "money",
+      "painPoint": "Users complain about \"money\" but it's not mentioned positively",
+      "count": 10,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "lifetime",
+      "painPoint": "Users complain about \"lifetime\" but it's not mentioned positively",
+      "count": 9,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "want",
+      "painPoint": "Users complain about \"want\" but it's not mentioned positively",
+      "count": 9,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "doesn",
+      "painPoint": "Users complain about \"doesn\" but it's not mentioned positively",
+      "count": 9,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "apple",
+      "painPoint": "Users complain about \"apple\" but it's not mentioned positively",
+      "count": 9,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "well",
+      "painPoint": "Users complain about \"well\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "tried",
+      "painPoint": "Users complain about \"tried\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Issues with app bugs and syncing in family subscriptions\",\n    \"Confusing or repetitive setup instructions\",\n    \"Annoying pop-up ads and prompts for paid features\",\n    \"Late activation of blocking feature leading to inefficacy\"\n  ],\n  \"lovedFeatures\": [\n    \"Ability to reduce screen time and social media addiction\",\n    \"Simple concept with effective prompts to reconsider app usage\",\n    \"Consciousness-building through app usage statistics and reminders\"\n  ],\n  \"marketGaps\": [\n    \"Lack of a social component for users to engage with friends or have a competitive element\",\n    \"Potential to improve user experience with more intuitive setup and usage\",\n    \"Opportunity to address bugs and compatibility issues, especially in family subscriptions\"\n  ],\n  \"recommendations\": [\n    \"Enhance user onboarding process for better clarity and ease of setup\",\n    \"Implement a social feature like leaderboards or friend comparisons to increase user engagement\",\n    \"Prioritize bug fixes and improve app performance, especially in syncing and blocking functionalities\"\n  ]\n}\n```"
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-06T18:48:17.414Z"
+}

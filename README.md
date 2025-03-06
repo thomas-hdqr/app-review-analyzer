@@ -123,3 +123,26 @@ OPENAI_API_KEY=your_openai_api_key
 ## License
 
 MIT
+
+
+The App Review Analyzer works like this:
+
+  1. Search for iOS Apps: You can search for any iOS app by keyword or browse by
+  categories like Weather, Productivity, etc.
+  2. View App Details: After finding an app, you can see its basic information like
+   ratings, developer, and description.
+  3. Fetch Reviews: Click the "Fetch Reviews" button to collect actual user reviews
+   from the App Store. The system pulls up to 200 recent reviews.
+  4. Analyze Reviews: Hit "Analyze App" to automatically process all those reviews
+  and identify:
+    - Sentiment (how many positive vs. negative reviews)
+    - Common themes in positive feedback
+    - Common complaints and problems
+    - Potential market gaps
+  5. Discover Opportunities: The analysis highlights what users love, what they
+  hate, and where current apps are falling short. These gaps represent
+  opportunities for new apps or features.
+
+  The app uses natural language processing to understand review text and organize
+  it into meaningful insights, all presented in a user-friendly dashboard with
+  charts and visualizations.
