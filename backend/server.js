@@ -12,7 +12,7 @@ const analysisRoutes = require('./routes/analysis');
 
 // Initialize Express app
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3005;
 
 // Ensure data directories exist
 function ensureDirectoriesExist() {
@@ -59,4 +59,4 @@ app.listen(PORT, () => {
   // Ensure directories exist
   ensureDirectoriesExist();
   console.log(`Server running on port ${PORT}`);
-}); 
+});

@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { getAppDetails, getSimilarApps, getReviews, analyzeReviews } from '@/lib/api';
-import AppCard from '@/components/AppCard';
-import ReviewList from '@/components/ReviewList';
+import { getAppDetails, getSimilarApps, getReviews, analyzeReviews } from '../../../lib/api';
+import AppCard from '../../../components/AppCard';
+import ReviewList from '../../../components/ReviewList';
 
 export default function AppDetailsPage() {
   const { id } = useParams();

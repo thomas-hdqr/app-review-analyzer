@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { searchApps, getCategories } from '@/lib/api';
-import AppCard from '@/components/AppCard';
+import { searchApps, getCategories } from '../../lib/api';
+import AppCard from '../../components/AppCard';
 
 export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState('');
