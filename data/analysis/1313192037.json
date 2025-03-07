@@ -1,0 +1,321 @@
+{
+  "sentimentAnalysis": {
+    "positive": 154,
+    "negative": 31,
+    "neutral": 15,
+    "total": 200,
+    "averageScore": 4.125,
+    "sentimentRatio": 4.967741935483871
+  },
+  "positiveThemes": [
+    {
+      "word": "workout",
+      "count": 65
+    },
+    {
+      "word": "good",
+      "count": 52
+    },
+    {
+      "word": "workouts",
+      "count": 42
+    },
+    {
+      "word": "great",
+      "count": 40
+    },
+    {
+      "word": "love",
+      "count": 34
+    },
+    {
+      "word": "best",
+      "count": 32
+    },
+    {
+      "word": "exercises",
+      "count": 31
+    },
+    {
+      "word": "really",
+      "count": 27
+    },
+    {
+      "word": "free",
+      "count": 24
+    },
+    {
+      "word": "much",
+      "count": 23
+    },
+    {
+      "word": "see",
+      "count": 21
+    },
+    {
+      "word": "helped",
+      "count": 20
+    },
+    {
+      "word": "home",
+      "count": 19
+    },
+    {
+      "word": "way",
+      "count": 19
+    },
+    {
+      "word": "helps",
+      "count": 18
+    },
+    {
+      "word": "work",
+      "count": 17
+    },
+    {
+      "word": "body",
+      "count": 17
+    },
+    {
+      "word": "getting",
+      "count": 15
+    },
+    {
+      "word": "amazing",
+      "count": 14
+    },
+    {
+      "word": "abs",
+      "count": 14
+    },
+    {
+      "word": "exercise",
+      "count": 13
+    },
+    {
+      "word": "lost",
+      "count": 13
+    },
+    {
+      "word": "lot",
+      "count": 13
+    },
+    {
+      "word": "plan",
+      "count": 12
+    },
+    {
+      "word": "easy",
+      "count": 11
+    },
+    {
+      "word": "stronger",
+      "count": 11
+    },
+    {
+      "word": "weight",
+      "count": 11
+    },
+    {
+      "word": "goal",
+      "count": 11
+    },
+    {
+      "word": "recommend",
+      "count": 11
+    },
+    {
+      "word": "equipment",
+      "count": 10
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "free",
+      "count": 14
+    },
+    {
+      "word": "pay",
+      "count": 14
+    },
+    {
+      "word": "subscription",
+      "count": 11
+    },
+    {
+      "word": "premium",
+      "count": 10
+    },
+    {
+      "word": "workout",
+      "count": 10
+    },
+    {
+      "word": "money",
+      "count": 10
+    },
+    {
+      "word": "paid",
+      "count": 8
+    },
+    {
+      "word": "back",
+      "count": 8
+    },
+    {
+      "word": "youtube",
+      "count": 6
+    },
+    {
+      "word": "everything",
+      "count": 6
+    },
+    {
+      "word": "charged",
+      "count": 6
+    },
+    {
+      "word": "trial",
+      "count": 6
+    },
+    {
+      "word": "waste",
+      "count": 6
+    },
+    {
+      "word": "plan",
+      "count": 6
+    },
+    {
+      "word": "account",
+      "count": 5
+    },
+    {
+      "word": "years",
+      "count": 5
+    },
+    {
+      "word": "couple",
+      "count": 4
+    },
+    {
+      "word": "answer",
+      "count": 4
+    },
+    {
+      "word": "problems",
+      "count": 4
+    },
+    {
+      "word": "annual",
+      "count": 4
+    },
+    {
+      "word": "asks",
+      "count": 4
+    },
+    {
+      "word": "support",
+      "count": 4
+    },
+    {
+      "word": "email",
+      "count": 4
+    },
+    {
+      "word": "subscriptions",
+      "count": 4
+    },
+    {
+      "word": "good",
+      "count": 4
+    },
+    {
+      "word": "overpriced",
+      "count": 4
+    },
+    {
+      "word": "watch",
+      "count": 4
+    },
+    {
+      "word": "bucks",
+      "count": 4
+    },
+    {
+      "word": "want",
+      "count": 4
+    },
+    {
+      "word": "started",
+      "count": 4
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "pay",
+      "painPoint": "Users complain about \"pay\" but it's not mentioned positively",
+      "count": 14,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "subscription",
+      "painPoint": "Users complain about \"subscription\" but it's not mentioned positively",
+      "count": 11,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "premium",
+      "painPoint": "Users complain about \"premium\" but it's not mentioned positively",
+      "count": 10,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "money",
+      "painPoint": "Users complain about \"money\" but it's not mentioned positively",
+      "count": 10,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "paid",
+      "painPoint": "Users complain about \"paid\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "back",
+      "painPoint": "Users complain about \"back\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "youtube",
+      "painPoint": "Users complain about \"youtube\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "everything",
+      "painPoint": "Users complain about \"everything\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "charged",
+      "painPoint": "Users complain about \"charged\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "trial",
+      "painPoint": "Users complain about \"trial\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\"Users feeling misled about payment requirements\", \"Limited yoga routines, especially at advanced levels\", \"Issues with removing specific exercises from workout plans\", \"Complaints about changes in pricing and subscription model\", \"Poor customer service and billing problems\"],\n  \"lovedFeatures\": [\"Variety of exercises and workout plans\", \"Personalized goal setting and recommendations\", \"Calorie tracking during exercises\", \"Effective workout regimens with visible results\", \"Quick HIIT exercises for busy days\"],\n  \"marketGaps\": [\"Lack of advanced yoga routines\", \"Inconsistencies in pricing and subscription models leading to user frustration\", \"Opportunity to improve customer service and billing transparency\"],\n  \"exploitableFeatures\": [\"Enhanced yoga routines at all skill levels\", \"Clear and transparent pricing structure with flexible subscription options\", \"Improved customer support and billing management\"],\n  \"recommendations\": [\"Expand yoga routines, especially at advanced levels\", \"Revise pricing and subscription model for clarity and flexibility\", \"Implement better customer support and billing management practices\"],\n  \"opportunityScore\": 7,\n  \"scoreJustification\": \"There is a strong demand for workout apps with personalized features and visible results, but the market gap lies in addressing user frustrations related to pricing, subscriptions, and customer service. By improving these areas and enhancing yoga offerings, a new app could capitalize on the existing positive sentiment while differentiating itself in the market.\"\n}\n```  "
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-07T14:50:39.119Z"
+}

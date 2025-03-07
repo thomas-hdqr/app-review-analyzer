@@ -103,6 +103,11 @@ export default function AppDetailsPage() {
     }
   };
 
+  // Handle filter change
+  const handleFilterChange = (newFilter) => {
+    setReviewFilter(newFilter);
+  };
+
   if (loading.app) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -379,7 +384,7 @@ export default function AppDetailsPage() {
                 <div className="flex space-x-2">
                   <select
                     value={reviewFilter}
-                    onChange={(e) => setReviewFilter(e.target.value)}
+                    onChange={(e) => handleFilterChange(e.target.value)}
                     className="px-3 py-1 border border-gray-300 rounded-md text-sm"
                   >
                     <option value="all">All Reviews</option>

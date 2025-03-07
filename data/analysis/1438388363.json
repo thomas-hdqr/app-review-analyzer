@@ -4,28 +4,28 @@
     "negative": 54,
     "neutral": 18,
     "total": 200,
-    "averageScore": 3.78,
+    "averageScore": 3.79,
     "sentimentRatio": 2.3703703703703702
   },
   "positiveThemes": [
     {
       "word": "love",
-      "count": 48
+      "count": 51
     },
     {
       "word": "habits",
       "count": 47
     },
     {
+      "word": "habit",
+      "count": 35
+    },
+    {
       "word": "good",
       "count": 35
     },
     {
-      "word": "habit",
-      "count": 34
-    },
-    {
-      "word": "great",
+      "word": "track",
       "count": 27
     },
     {
@@ -33,28 +33,32 @@
       "count": 25
     },
     {
-      "word": "track",
-      "count": 25
-    },
-    {
-      "word": "every",
+      "word": "great",
       "count": 25
     },
     {
       "word": "tracker",
-      "count": 23
+      "count": 22
     },
     {
-      "word": "please",
+      "word": "every",
       "count": 22
+    },
+    {
+      "word": "thank",
+      "count": 21
     },
     {
       "word": "easy",
-      "count": 22
+      "count": 21
     },
     {
       "word": "daily",
       "count": 20
+    },
+    {
+      "word": "please",
+      "count": 19
     },
     {
       "word": "much",
@@ -65,20 +69,16 @@
       "count": 19
     },
     {
-      "word": "thank",
-      "count": 19
-    },
-    {
       "word": "helped",
       "count": 18
     },
     {
-      "word": "really",
+      "word": "life",
       "count": 17
     },
     {
-      "word": "life",
-      "count": 17
+      "word": "really",
+      "count": 16
     },
     {
       "word": "simple",
@@ -87,6 +87,46 @@
     {
       "word": "way",
       "count": 15
+    },
+    {
+      "word": "perfect",
+      "count": 14
+    },
+    {
+      "word": "things",
+      "count": 14
+    },
+    {
+      "word": "stay",
+      "count": 14
+    },
+    {
+      "word": "everything",
+      "count": 14
+    },
+    {
+      "word": "widget",
+      "count": 13
+    },
+    {
+      "word": "keep",
+      "count": 13
+    },
+    {
+      "word": "need",
+      "count": 13
+    },
+    {
+      "word": "set",
+      "count": 13
+    },
+    {
+      "word": "tracking",
+      "count": 13
+    },
+    {
+      "word": "apps",
+      "count": 13
     }
   ],
   "negativeThemes": [
@@ -96,7 +136,7 @@
     },
     {
       "word": "habits",
-      "count": 19
+      "count": 18
     },
     {
       "word": "apple",
@@ -108,26 +148,22 @@
     },
     {
       "word": "family",
-      "count": 16
-    },
-    {
-      "word": "data",
-      "count": 15
+      "count": 14
     },
     {
       "word": "lifetime",
-      "count": 14
+      "count": 13
     },
     {
       "word": "membership",
       "count": 13
     },
     {
-      "word": "add",
+      "word": "data",
       "count": 13
     },
     {
-      "word": "premium",
+      "word": "add",
       "count": 12
     },
     {
@@ -135,15 +171,15 @@
       "count": 12
     },
     {
-      "word": "back",
-      "count": 11
-    },
-    {
       "word": "work",
       "count": 10
     },
     {
       "word": "paid",
+      "count": 10
+    },
+    {
+      "word": "premium",
       "count": 10
     },
     {
@@ -155,11 +191,11 @@
       "count": 10
     },
     {
-      "word": "thing",
-      "count": 9
+      "word": "back",
+      "count": 10
     },
     {
-      "word": "developer",
+      "word": "thing",
       "count": 9
     },
     {
@@ -167,8 +203,52 @@
       "count": 9
     },
     {
+      "word": "downloaded",
+      "count": 8
+    },
+    {
+      "word": "developer",
+      "count": 8
+    },
+    {
       "word": "cannot",
-      "count": 9
+      "count": 8
+    },
+    {
+      "word": "trying",
+      "count": 7
+    },
+    {
+      "word": "option",
+      "count": 7
+    },
+    {
+      "word": "tracking",
+      "count": 7
+    },
+    {
+      "word": "purchase",
+      "count": 7
+    },
+    {
+      "word": "unusable",
+      "count": 6
+    },
+    {
+      "word": "didn",
+      "count": 6
+    },
+    {
+      "word": "showing",
+      "count": 6
+    },
+    {
+      "word": "though",
+      "count": 6
+    },
+    {
+      "word": "new",
+      "count": 6
     }
   ],
   "marketGaps": [
@@ -187,19 +267,13 @@
     {
       "feature": "family",
       "painPoint": "Users complain about \"family\" but it's not mentioned positively",
-      "count": 16,
-      "opportunityScore": 10
-    },
-    {
-      "feature": "data",
-      "painPoint": "Users complain about \"data\" but it's not mentioned positively",
-      "count": 15,
+      "count": 14,
       "opportunityScore": 10
     },
     {
       "feature": "lifetime",
       "painPoint": "Users complain about \"lifetime\" but it's not mentioned positively",
-      "count": 14,
+      "count": 13,
       "opportunityScore": 10
     },
     {
@@ -209,14 +283,14 @@
       "opportunityScore": 10
     },
     {
-      "feature": "add",
-      "painPoint": "Users complain about \"add\" but it's not mentioned positively",
+      "feature": "data",
+      "painPoint": "Users complain about \"data\" but it's not mentioned positively",
       "count": 13,
       "opportunityScore": 10
     },
     {
-      "feature": "premium",
-      "painPoint": "Users complain about \"premium\" but it's not mentioned positively",
+      "feature": "add",
+      "painPoint": "Users complain about \"add\" but it's not mentioned positively",
       "count": 12,
       "opportunityScore": 10
     },
@@ -227,15 +301,21 @@
       "opportunityScore": 10
     },
     {
-      "feature": "back",
-      "painPoint": "Users complain about \"back\" but it's not mentioned positively",
-      "count": 11,
+      "feature": "work",
+      "painPoint": "Users complain about \"work\" but it's not mentioned positively",
+      "count": 10,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "paid",
+      "painPoint": "Users complain about \"paid\" but it's not mentioned positively",
+      "count": 10,
       "opportunityScore": 10
     }
   ],
   "aiInsights": {
-    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Limited functionality in the free version, with key features locked behind a paywall\",\n    \"Issues with data reliability and data loss in mood tracking\",\n    \"Confusing subscription and payment model leading to unexpected charges\",\n    \"Inefficient user interface for certain actions like adding specific quantities to habits\",\n    \"Unwanted pop-ups and repeated requests for reviews/feedback\"\n  ],\n  \"lovedFeatures\": [\n    \"Habit tracking and goal setting functionalities\",\n    \"User-friendly widgets for Home Screen customization\",\n    \"Mood tracking feature\",\n    \"Flexibility and customization options for tracking various aspects of life\",\n    \"Responsive customer support and quick issue resolution\"\n  ],\n  \"marketGaps\": [\n    \"Lack of multi-language support beyond English\",\n    \"Absence of specific habit categories or customizable options for habit visuals\",\n    \"No family sharing feature for users on separate Apple plans\"\n  ],\n  \"exploitableFeatures\": [\n    \"Implement multi-language support to cater to a wider user base\",\n    \"Enhance habit customization with a wider range of visuals and categories\",\n    \"Introduce a family sharing feature to promote app usage among households\"\n  ],\n  \"recommendations\": [\n    \"Improve transparency in the subscription model to prevent unexpected charges and enhance user trust\",\n    \"Optimize the user interface for more efficient interactions, such as adding quantities to habits\",\n    \"Reduce intrusive pop-ups and review requests to enhance overall user experience\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"The app has a strong user base with a clear demand for habit tracking and goal setting features. By addressing pain points and market gaps while leveraging loved features, a new app could capture a significant market share. Improving user experience and expanding features could further solidify its position in the market.\"\n}\n```"
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Issues with app bugs and saving habits\",\n    \"Confusion and frustration with paid features and subscriptions\",\n    \"Difficulty in adding family members to plans\",\n    \"Limited customization options for habits and visuals\"\n  ],\n  \"lovedFeatures\": [\n    \"Customizable settings and visuals\",\n    \"Apple Watch integration for tracking habits\",\n    \"Motivating and gamified habit tracking experience\",\n    \"Supportive and caring development team\"\n  ],\n  \"marketGaps\": [\n    \"Lack of effective family plan management\",\n    \"Inadequate customization options for habit visuals\",\n    \"Opportunity to improve habit tracking accuracy and efficiency\",\n    \"Potential for enhancing habit tracking for diverse user needs\"\n  ],\n  \"exploitableFeatures\": [\n    \"Enhanced family plan management with easy member addition\",\n    \"Expanded customization options for habit visuals and tracking\",\n    \"Improved accuracy and efficiency in habit tracking\",\n    \"Inclusive features catering to various habit tracking needs\"\n  ],\n  \"recommendations\": [\n    \"Implement a seamless and user-friendly family plan management system\",\n    \"Enhance visual customization options for habits to cater to diverse user preferences\",\n    \"Focus on improving habit tracking accuracy and efficiency, possibly integrating with wearable devices for better data collection\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"The market gaps identified present significant opportunities for a new app to address user pain points and improve upon existing features. By focusing on enhancing family plan management, customization options, and habit tracking capabilities, a new app can differentiate itself in the market and attract users seeking a more comprehensive and user-friendly habit tracking solution.\"\n}\n```"
   },
   "reviewCount": 200,
-  "lastUpdated": "2025-03-07T10:45:57.674Z"
+  "lastUpdated": "2025-03-07T14:45:52.767Z"
 }

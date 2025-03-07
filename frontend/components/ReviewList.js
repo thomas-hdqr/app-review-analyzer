@@ -1,18 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 /**
  * ReviewList component for displaying reviews
  * @param {Object} props - Component props
  * @param {Array} props.reviews - List of reviews to display
+ * @param {string} props.filter - Filter type ('all', 'positive', 'negative', 'neutral')
  */
-export default function ReviewList({ reviews }) {
-  const [filterRating, setFilterRating] = useState('all');
+export default function ReviewList({ reviews, filter = 'all' }) {
+  const [filterRating, setFilterRating] = useState(filter);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('date');
   const [currentPage, setCurrentPage] = useState(1);
   const reviewsPerPage = 10;
+
+  // Update filterRating when filter prop changes
+  useEffect(() => {
+    setFilterRating(filter);
+  }, [filter]);
 
   // Filter reviews by rating
   const filterReviews = (review) => {
