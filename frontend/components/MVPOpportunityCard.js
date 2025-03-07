@@ -188,7 +188,7 @@ export default function MVPOpportunityCard({ opportunityData }) {
                 >
                   <div className="bg-white rounded-full h-32 w-32 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br
+                      <div className={`text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br
                         ${
                         (mvpOpportunityScore?.score >= 8)
                           ? 'from-green-500 to-emerald-600'
@@ -199,7 +199,7 @@ export default function MVPOpportunityCard({ opportunityData }) {
                               : (mvpOpportunityScore?.score > 0)
                                 ? 'from-red-400 to-red-600'
                                 : 'from-gray-400 to-gray-500'
-                      }">
+                      }`}>
                         {(mvpOpportunityScore?.score === 0 && (!marketGaps || marketGaps.length === 0))
                           ? 'N/A'
                           : mvpOpportunityScore?.score || '?'
