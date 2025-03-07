@@ -142,16 +142,27 @@ export default function OpportunityPage() {
     
     setIsAnalyzing(true);
     setError(null);
+    setOpportunityData(null); // Clear any previous results
     
     try {
       // Fetch reviews for each app (one by one to avoid rate limiting)
+      let reviewsFound = false;
+      
       for (const id of ids) {
         try {
-          await api.getReviews(id);
+          const reviewsResponse = await api.getReviews(id);
+          if (reviewsResponse.success && reviewsResponse.data?.length > 0) {
+            reviewsFound = true;
+          }
         } catch (e) {
           console.error(`Error fetching reviews for app ${id}:`, e);
           // Continue with other apps even if one fails
         }
+      }
+      
+      // Show a warning if no reviews were found, but continue the process
+      if (!reviewsFound) {
+        console.warn("No reviews found for any of the selected apps");
       }
       
       // Analyze reviews for each app (one by one)
@@ -170,12 +181,24 @@ export default function OpportunityPage() {
       
       if (response.success) {
         setOpportunityData(response.data);
+        
+        // Show a specific warning if data quality is low
+        if (
+          response.data.dataQuality && 
+          response.data.dataQuality.appsWithReviews === 0
+        ) {
+          setError(
+            'Analysis completed, but no app reviews were found. The results may not be accurate. Try selecting apps with more reviews.'
+          );
+        }
       } else {
-        setError('Error analyzing opportunities');
+        setError('Error analyzing opportunities. Please try with different apps.');
       }
     } catch (error) {
       console.error('Error analyzing opportunities:', error);
-      setError('Error analyzing market opportunities. Make sure the apps have reviews.');
+      setError(
+        'Error analyzing market opportunities. The server may be experiencing issues or the selected apps may not have enough reviews for analysis.'
+      );
     } finally {
       setIsAnalyzing(false);
     }

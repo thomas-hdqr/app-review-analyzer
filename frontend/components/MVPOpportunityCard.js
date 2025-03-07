@@ -28,7 +28,8 @@ export default function MVPOpportunityCard({ opportunityData }) {
     mvpRecommendedFeatures, 
     aiInsights, 
     appsAnalyzed,
-    analysisDate 
+    analysisDate,
+    dataQuality
   } = opportunityData;
   
   // Prepare data for theme cloud
@@ -70,14 +71,35 @@ export default function MVPOpportunityCard({ opportunityData }) {
             Analyzed {appsAnalyzed?.length || 0} apps • {formattedDate}
           </div>
         </div>
+        
+        {/* Data quality warning */}
+        {dataQuality && dataQuality.appsWithReviews < dataQuality.totalApps && (
+          <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded-md text-sm text-yellow-800">
+            <div className="flex items-center">
+              <svg className="w-4 h-4 mr-1 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              <span>
+                Limited data: Only {dataQuality.appsWithReviews} of {dataQuality.totalApps} apps have reviews. Results may be incomplete.
+              </span>
+            </div>
+          </div>
+        )}
       </div>
       
       {/* Opportunity Score */}
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center">
           <div className="mr-4">
-            <div className={`text-4xl font-bold rounded-full h-20 w-20 flex items-center justify-center ${getScoreBackground(mvpOpportunityScore?.score || 0)}`}>
-              {mvpOpportunityScore?.score || '?'}/10
+            <div className={`text-4xl font-bold rounded-full h-20 w-20 flex items-center justify-center ${
+              (mvpOpportunityScore?.score === 0 && (!marketGaps || marketGaps.length === 0))
+                ? 'bg-gray-100 text-gray-600' 
+                : getScoreBackground(mvpOpportunityScore?.score || 0)
+            }`}>
+              {(mvpOpportunityScore?.score === 0 && (!marketGaps || marketGaps.length === 0))
+                ? 'N/A'
+                : `${mvpOpportunityScore?.score || '?'}/10`
+              }
             </div>
           </div>
           <div className="flex-1">
@@ -87,7 +109,16 @@ export default function MVPOpportunityCard({ opportunityData }) {
             <p className="text-gray-600">
               {mvpOpportunityScore?.reasoning || 'No opportunity score available'}
             </p>
-            {mvpOpportunityScore?.baseFeatures && (
+            
+            {/* Show action hint if no data */}
+            {mvpOpportunityScore?.score === 0 && (!marketGaps || marketGaps.length === 0) && (
+              <div className="mt-2 p-2 bg-blue-50 border border-blue-100 rounded text-sm text-blue-700">
+                Try selecting different apps with more reviews for better analysis results.
+              </div>
+            )}
+            
+            {/* Show base features if available */}
+            {mvpOpportunityScore?.baseFeatures && mvpOpportunityScore.baseFeatures.length > 0 && (
               <div className="mt-2">
                 <p className="text-sm font-medium text-gray-700">Recommended base features:</p>
                 <div className="flex flex-wrap gap-2 mt-1">
