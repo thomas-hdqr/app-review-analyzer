@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ServerStatus from '../../components/ServerStatus';
 import { getCachedAnalysis, getAppDetails, identifyMarketGaps, checkApiHealth } from '../../lib/api';
 
 export default function MarketGapsPage() {
@@ -123,6 +124,9 @@ export default function MarketGapsPage() {
 
   return (
     <div className="space-y-6">
+      {/* Server Status Check */}
+      {!apiStatus.healthy && <ServerStatus />}
+      
       <div className="bg-white shadow rounded-lg p-6">
         <div className="flex justify-between items-start">
           <div>

@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002/api';
 
 /**
  * Search for apps by term or category
@@ -290,15 +290,31 @@ export async function analyzeMVPOpportunity(appIds, category) {
  */
 export async function checkApiHealth() {
   try {
-    const response = await fetch(`${API_BASE_URL}/health`);
+    console.log('Checking API health at:', `${API_BASE_URL}/health`);
+    const response = await fetch(`${API_BASE_URL}/health`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      timeout: 5000 // 5 second timeout
+    });
     
     if (!response.ok) {
-      throw new Error('API server is not responding properly');
+      const errorText = await response.text();
+      console.error('API health check failed with status:', response.status, errorText);
+      throw new Error(`API server responded with status ${response.status}: ${errorText}`);
     }
+    
+    const data = await response.json();
+    console.log('API health check successful:', data);
     
     return {
       success: true,
-      data: await response.json()
+      data: data
     };
   } catch (error) {
     console.error('API health check failed:', error);

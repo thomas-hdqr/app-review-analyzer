@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import AppCard from '../../components/AppCard';
+import ServerStatus from '../../components/ServerStatus';
 import { searchApps, getCategories, checkApiHealth } from '../../lib/api';
 
 export default function SearchPage() {
@@ -112,6 +113,9 @@ export default function SearchPage() {
 
   return (
     <div className="space-y-6">
+      {/* Server Status Check */}
+      {!apiStatus.healthy && <ServerStatus />}
+      
       <div className="bg-white shadow rounded-lg p-6">
         <div className="flex justify-between items-start">
           <div>
