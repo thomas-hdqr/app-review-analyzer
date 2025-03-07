@@ -1,140 +1,83 @@
-'use client';
-
-import { Inter } from 'next/font/google';
 import './globals.css';
-import { usePathname } from 'next/navigation';
+import { Inter } from 'next/font/google';
 import Link from 'next/link';
-import ApiStatus from '../components/ApiStatus';
+import ClientApiStatus from '../components/ClientApiStatus';
+import Footer from '../components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+// Load Inter font
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
+export const metadata = {
+  title: 'App Review Analyzer',
+  description: 'Analyze iOS app reviews to identify market gaps and opportunities',
+};
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-
-  // Function to determine if a nav link is active
-  const isActive = (path) => {
-    if (path === '/' && pathname === '/') return true;
-    if (path !== '/' && pathname.startsWith(path)) return true;
-    return false;
-  };
-
   return (
-    <html lang="en">
-      <head>
-        <title>App Review Analyzer</title>
-        <meta name="description" content="Find market gaps by analyzing iOS app reviews" />
-      </head>
-      <body className={inter.className}>
-        <div className="min-h-screen bg-black">
-          <header className="border-b border-[#2c2c2e]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between h-16">
-                <div className="flex">
-                  <div className="flex-shrink-0 flex items-center">
-                    <Link href="/" className="text-xl font-bold text-white">
-                      <span className="text-[#ff453a] glow-text">App</span>Review Analyzer
-                    </Link>
+    <html lang="en" className={`${inter.variable}`}>
+      <body className="min-h-screen bg-[#000000]">
+        <div className="flex flex-col min-h-screen">
+          {/* Header */}
+          <header className="sticky top-0 z-10 bg-[#1c1c1e]/80 backdrop-blur-md border-b border-[#2c2c2e]">
+            <div className="container mx-auto px-4 py-3">
+              <div className="flex items-center justify-between">
+                {/* Logo and Title */}
+                <Link href="/" className="flex items-center space-x-2">
+                  <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[#0a84ff] to-[#bf5af2] rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                    </svg>
                   </div>
-                  <nav className="ml-6 flex space-x-8">
-                    <Link
-                      href="/"
-                      className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                        isActive('/') 
-                          ? 'border-[#ff453a] text-white' 
-                          : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700'
-                      }`}
-                    >
-                      Home
-                    </Link>
-                    <Link
-                      href="/search"
-                      className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                        isActive('/search') 
-                          ? 'border-[#ff453a] text-white' 
-                          : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700'
-                      }`}
-                    >
-                      Search
-                    </Link>
-                    <Link
-                      href="/reports"
-                      className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                        isActive('/reports') 
-                          ? 'border-[#ff453a] text-white' 
-                          : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700'
-                      }`}
-                    >
-                      Reports
-                    </Link>
-                    <Link
-                      href="/market-gaps"
-                      className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                        isActive('/market-gaps') || isActive('/opportunity')
-                          ? 'border-[#ff453a] text-white' 
-                          : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700'
-                      }`}
-                    >
-                      Market Gaps
-                    </Link>
-                  </nav>
-                </div>
+                  <span className="text-lg font-semibold text-white">App Review Analyzer</span>
+                </Link>
                 
-                <div className="flex items-center">
-                  <ApiStatus />
+                {/* Navigation */}
+                <nav className="flex items-center space-x-1">
+                  <Link 
+                    href="/" 
+                    className="px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-[#2c2c2e] rounded-lg transition-colors"
+                  >
+                    Home
+                  </Link>
+                  <Link 
+                    href="/search" 
+                    className="px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-[#2c2c2e] rounded-lg transition-colors"
+                  >
+                    Search
+                  </Link>
+                  <Link 
+                    href="/saved" 
+                    className="px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-[#2c2c2e] rounded-lg transition-colors"
+                  >
+                    Saved Apps
+                  </Link>
+                  <Link 
+                    href="/insights" 
+                    className="px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-[#2c2c2e] rounded-lg transition-colors"
+                  >
+                    Insights
+                  </Link>
+                </nav>
+                
+                {/* API Status */}
+                <div className="api-status-container">
+                  <ClientApiStatus />
                 </div>
               </div>
             </div>
           </header>
           
-          <main>
-            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-              {children}
-            </div>
+          {/* Main Content */}
+          <main className="flex-grow container mx-auto px-4 py-6">
+            {children}
           </main>
           
-          <footer className="border-t border-[#2c2c2e] mt-12">
-            <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-4">App Review Analyzer</h3>
-                  <p className="text-gray-400">
-                    A powerful tool for indie hackers to find market gaps by analyzing iOS app reviews.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
-                  <ul className="space-y-2">
-                    <li>
-                      <Link href="/" className="text-gray-400 hover:text-white">
-                        Home
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/search" className="text-gray-400 hover:text-white">
-                        Search Apps
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/market-gaps" className="text-gray-400 hover:text-white">
-                        Market Gaps
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-4">About</h3>
-                  <p className="text-gray-400">
-                    Built with Next.js, Express, and natural language processing to help you discover opportunities in the App Store.
-                  </p>
-                </div>
-              </div>
-              <div className="mt-8 pt-8 border-t border-[#2c2c2e] text-center">
-                <p className="text-sm text-gray-500">
-                  © {new Date().getFullYear()} App Review Analyzer. All rights reserved.
-                </p>
-              </div>
-            </div>
-          </footer>
+          {/* Footer */}
+          <Footer />
         </div>
       </body>
     </html>

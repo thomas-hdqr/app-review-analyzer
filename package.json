@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "A tool to scrape and analyze iOS app reviews to identify market gaps",
   "scripts": {
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "node start-dev.js",
     "dev:backend": "nodemon backend/server.js",
     "dev:frontend": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
     "start": "node backend/server.js",
-    "setup": "node scripts/setup.js",
-    "start-dev": "node start-dev.js"
+    "setup": "node scripts/setup.js"
   },
   "keywords": [
     "app",

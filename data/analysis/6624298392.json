@@ -87,6 +87,46 @@
     {
       "word": "back",
       "count": 4
+    },
+    {
+      "word": "latest",
+      "count": 4
+    },
+    {
+      "word": "definitely",
+      "count": 4
+    },
+    {
+      "word": "see",
+      "count": 4
+    },
+    {
+      "word": "track",
+      "count": 4
+    },
+    {
+      "word": "tracker",
+      "count": 4
+    },
+    {
+      "word": "changed",
+      "count": 4
+    },
+    {
+      "word": "goals",
+      "count": 4
+    },
+    {
+      "word": "accurate",
+      "count": 4
+    },
+    {
+      "word": "feature",
+      "count": 4
+    },
+    {
+      "word": "game",
+      "count": 4
     }
   ],
   "negativeThemes": [
@@ -169,6 +209,46 @@
     {
       "word": "bought",
       "count": 6
+    },
+    {
+      "word": "see",
+      "count": 6
+    },
+    {
+      "word": "barcode",
+      "count": 6
+    },
+    {
+      "word": "protein",
+      "count": 6
+    },
+    {
+      "word": "count",
+      "count": 6
+    },
+    {
+      "word": "doesn",
+      "count": 6
+    },
+    {
+      "word": "money",
+      "count": 6
+    },
+    {
+      "word": "chicken",
+      "count": 6
+    },
+    {
+      "word": "bowl",
+      "count": 6
+    },
+    {
+      "word": "work",
+      "count": 6
+    },
+    {
+      "word": "longer",
+      "count": 4
     }
   ],
   "marketGaps": [
@@ -234,8 +314,8 @@
     }
   ],
   "aiInsights": {
-    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Lack of free trial leading to uncertainty about app functionality before paying for subscription\",\n    \"Inaccurate calorie and macro tracking for certain foods\",\n    \"Issues with billing discrepancies and overcharging\",\n    \"Limited functionalities like no connection to Apple Health, difficulty in correcting values, and buggy adjustments\",\n    \"Lack of diverse measurement input options and historical data limitations\",\n    \"Lack of responsiveness to user feedback and customer service issues\"\n  ],\n  \"lovedFeatures\": [\n    \"User-friendly interface\",\n    \"AI suggestions for meals and portion sizes\",\n    \"Vast food database for easy food logging\"\n  ],\n  \"marketGaps\": [\n    \"Absence of a free version or trial option to showcase app benefits\",\n    \"Need for improved accuracy in calorie and macro tracking for all types of foods\",\n    \"Opportunity to enhance user engagement with more insightful data and progress tracking features\"\n  ],\n  \"recommendations\": [\n    \"Introduce a free trial period or a limited version of the app to allow users to experience key features before committing to a subscription\",\n    \"Enhance accuracy in calorie and macro tracking for all types of foods to build user trust and reliability\",\n    \"Implement user-requested features like diverse measurement input options, historical data access, progress tracking dashboards, and integration with Apple Health\"\n  ]\n}\n```"
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Inaccurate calorie and macro tracking, especially with barcode scanning\",\n    \"High upfront cost without a free trial option\",\n    \"Lack of essential features like micronutrient tracking and integration with popular fitness devices\",\n    \"Issues with saved food images disappearing and inability to rename saved foods\"\n  ],\n  \"lovedFeatures\": [\n    \"Food scanning feature\",\n    \"User-friendly interface\",\n    \"Accuracy of AI suggestions for meals and portion sizes\",\n    \"Vast food database for easy logging\"\n  ],\n  \"marketGaps\": [\n    \"Absence of a free version or a trial period for users to experience the app before committing to a paid subscription\",\n    \"Limited features compared to competitors, lacking weight tracking, water intake logging, and comprehensive data analysis\",\n    \"Opportunity to improve accuracy in barcode scanning and calorie tracking to enhance user trust and satisfaction\"\n  ],\n  \"exploitableFeatures\": [\n    \"Implement a free trial period or a basic version with limited features to attract more users\",\n    \"Enhance barcode scanning accuracy and ensure precise calorie and macro tracking for all types of foods\",\n    \"Integrate additional features like weight tracking, water intake logging, and detailed data analysis for personalized recommendations\"\n  ],\n  \"recommendations\": [\n    \"Offer a free trial period or a basic version with limited features for users to experience the app before subscribing\",\n    \"Improve barcode scanning accuracy and overall calorie tracking precision\",\n    \"Integrate features like weight tracking, water intake logging, and detailed data analysis for a comprehensive user experience\"\n  ],\n  \"opportunityScore\": 7,\n  \"scoreJustification\": \"There is a clear market need for a more accurate and feature-rich calorie tracking app with a free trial option. By addressing the pain points and implementing the recommended features, a new app could attract users looking for a comprehensive nutrition tracking solution.\"\n}\n```  "
   },
   "reviewCount": 80,
-  "lastUpdated": "2025-03-06T18:54:26.473Z"
+  "lastUpdated": "2025-03-07T15:00:13.594Z"
 }

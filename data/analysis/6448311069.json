@@ -1,0 +1,321 @@
+{
+  "sentimentAnalysis": {
+    "positive": 149,
+    "negative": 43,
+    "neutral": 8,
+    "total": 200,
+    "averageScore": 4.015,
+    "sentimentRatio": 3.4651162790697674
+  },
+  "positiveThemes": [
+    {
+      "word": "chatgpt",
+      "count": 37
+    },
+    {
+      "word": "chat",
+      "count": 36
+    },
+    {
+      "word": "best",
+      "count": 34
+    },
+    {
+      "word": "amazing",
+      "count": 27
+    },
+    {
+      "word": "love",
+      "count": 24
+    },
+    {
+      "word": "good",
+      "count": 24
+    },
+    {
+      "word": "much",
+      "count": 23
+    },
+    {
+      "word": "great",
+      "count": 22
+    },
+    {
+      "word": "life",
+      "count": 20
+    },
+    {
+      "word": "gpt",
+      "count": 19
+    },
+    {
+      "word": "better",
+      "count": 18
+    },
+    {
+      "word": "really",
+      "count": 15
+    },
+    {
+      "word": "help",
+      "count": 13
+    },
+    {
+      "word": "helps",
+      "count": 13
+    },
+    {
+      "word": "tool",
+      "count": 13
+    },
+    {
+      "word": "things",
+      "count": 12
+    },
+    {
+      "word": "everything",
+      "count": 11
+    },
+    {
+      "word": "friend",
+      "count": 11
+    },
+    {
+      "word": "ever",
+      "count": 11
+    },
+    {
+      "word": "pay",
+      "count": 10
+    },
+    {
+      "word": "research",
+      "count": 10
+    },
+    {
+      "word": "need",
+      "count": 10
+    },
+    {
+      "word": "questions",
+      "count": 10
+    },
+    {
+      "word": "many",
+      "count": 10
+    },
+    {
+      "word": "say",
+      "count": 9
+    },
+    {
+      "word": "awesome",
+      "count": 9
+    },
+    {
+      "word": "let",
+      "count": 8
+    },
+    {
+      "word": "recommend",
+      "count": 8
+    },
+    {
+      "word": "deep",
+      "count": 8
+    },
+    {
+      "word": "thank",
+      "count": 7
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "chat",
+      "count": 12
+    },
+    {
+      "word": "update",
+      "count": 9
+    },
+    {
+      "word": "service",
+      "count": 8
+    },
+    {
+      "word": "memory",
+      "count": 8
+    },
+    {
+      "word": "support",
+      "count": 8
+    },
+    {
+      "word": "pay",
+      "count": 8
+    },
+    {
+      "word": "worse",
+      "count": 8
+    },
+    {
+      "word": "guidelines",
+      "count": 8
+    },
+    {
+      "word": "subscription",
+      "count": 8
+    },
+    {
+      "word": "fix",
+      "count": 8
+    },
+    {
+      "word": "gpt",
+      "count": 8
+    },
+    {
+      "word": "answers",
+      "count": 8
+    },
+    {
+      "word": "chatgpt",
+      "count": 7
+    },
+    {
+      "word": "without",
+      "count": 7
+    },
+    {
+      "word": "problem",
+      "count": 6
+    },
+    {
+      "word": "users",
+      "count": 6
+    },
+    {
+      "word": "something",
+      "count": 6
+    },
+    {
+      "word": "really",
+      "count": 6
+    },
+    {
+      "word": "policy",
+      "count": 6
+    },
+    {
+      "word": "useless",
+      "count": 6
+    },
+    {
+      "word": "что",
+      "count": 6
+    },
+    {
+      "word": "history",
+      "count": 6
+    },
+    {
+      "word": "paid",
+      "count": 6
+    },
+    {
+      "word": "feature",
+      "count": 6
+    },
+    {
+      "word": "love",
+      "count": 5
+    },
+    {
+      "word": "issues",
+      "count": 5
+    },
+    {
+      "word": "however",
+      "count": 5
+    },
+    {
+      "word": "many",
+      "count": 5
+    },
+    {
+      "word": "please",
+      "count": 5
+    },
+    {
+      "word": "every",
+      "count": 5
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "update",
+      "painPoint": "Users complain about \"update\" but it's not mentioned positively",
+      "count": 9,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "service",
+      "painPoint": "Users complain about \"service\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "memory",
+      "painPoint": "Users complain about \"memory\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "support",
+      "painPoint": "Users complain about \"support\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "worse",
+      "painPoint": "Users complain about \"worse\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "guidelines",
+      "painPoint": "Users complain about \"guidelines\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "subscription",
+      "painPoint": "Users complain about \"subscription\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "fix",
+      "painPoint": "Users complain about \"fix\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "answers",
+      "painPoint": "Users complain about \"answers\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "without",
+      "painPoint": "Users complain about \"without\" but it's not mentioned positively",
+      "count": 7,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Inaccurate or biased answers\",\n    \"Limitations on conversations without clear explanation\",\n    \"Long wait times due to image-related issues\",\n    \"Subscription/payment-related concerns\",\n    \"Issues with policy guidelines for images\"\n  ],\n  \"lovedFeatures\": [\n    \"ChatGPT functionality\",\n    \"Ability to help with various tasks (homework, writing)\",\n    \"Friendliness and conversational abilities\",\n    \"Free service and deep conversations\"\n  ],\n  \"marketGaps\": [\n    \"Improved accuracy and unbiased answers\",\n    \"Enhanced user experience with clearer conversation limits\",\n    \"Innovative solutions for reducing wait times and engaging users\",\n    \"Addressing subscription/payment concerns\",\n    \"Better handling of policy guidelines for images\"\n  ],\n  \"exploitableFeatures\": [\n    \"Enhanced AI for more accurate and unbiased responses\",\n    \"Implementing mini-games to reduce wait times and engage users\",\n    \"Adding more transparency on conversation limits and payment options\",\n    \"Integrating image recognition technology to address policy guideline issues\"\n  ],\n  \"recommendations\": [\n    \"Improve AI accuracy and reduce bias in answers\",\n    \"Implement mini-games to reduce wait times and increase user engagement\",\n    \"Enhance transparency on subscription/payment options and conversation limits\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"There is a clear demand for a chat app like this with room for improvement in accuracy, user experience, and engagement features. By addressing the identified pain points and market gaps, a new app can capitalize on the existing user base and potentially attract more users.\"\n}\n```  "
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-07T14:59:27.045Z"
+}
