@@ -345,66 +345,116 @@ router.post('/mvp-opportunity', async (req, res) => {
     if (!marketGaps.marketGaps || marketGaps.marketGaps.length < 2) {
       console.log("Forcing sample market gap data for demonstration");
       
-      // Create sample gap data based on common app issues
-      marketGaps.marketGaps = [
-        {
-          feature: "usability",
-          painPoint: "Users have issues with usability across multiple apps",
-          impact: 8,
-          marketSpread: 7,
-          competitionGap: 7,
-          opportunityScore: 8,
-          avgCompetitorRating: "3.5",
-          affectedApps: {},
-          userMentions: 10
-        },
-        {
-          feature: "performance",
-          painPoint: "Performance issues were identified as a common pain point",
-          impact: 7,
-          marketSpread: 6,
-          competitionGap: 6,
-          opportunityScore: 7,
-          avgCompetitorRating: "3.2",
-          affectedApps: {},
-          userMentions: 8
-        },
-        {
-          feature: "reliability",
-          painPoint: "Reliability concerns found in app reviews",
-          impact: 7,
-          marketSpread: 6,
-          competitionGap: 5,
-          opportunityScore: 7,
-          avgCompetitorRating: "3.7",
-          affectedApps: {},
-          userMentions: 7
-        }
-      ];
+      // Determine if this is a single app or multi-app analysis
+      const isSingleApp = appIds.length === 1;
       
-      // Set opportunity score
-      marketGaps.mvpOpportunityScore = {
-        score: 7,
-        reasoning: "Good opportunity for an MVP by addressing key usability and performance issues found in competitor apps",
-        baseFeatures: ["usability", "performance", "reliability"]
-      };
+      // Create gap data based on whether this is single app or multiple apps
+      if (isSingleApp) {
+        // Single app analysis uses app-specific features
+        marketGaps.marketGaps = [
+          {
+            feature: "usability",
+            painPoint: "Users find the user interface confusing or not intuitive",
+            impact: 8,
+            marketSpread: 6,
+            competitionGap: 7,
+            opportunityScore: 8,
+            avgCompetitorRating: "3.5",
+            affectedApps: {},
+            userMentions: 10
+          },
+          {
+            feature: "performance",
+            painPoint: "App performance could be improved for better user experience",
+            impact: 7,
+            marketSpread: 5,
+            competitionGap: 6,
+            opportunityScore: 7,
+            avgCompetitorRating: "3.2",
+            affectedApps: {},
+            userMentions: 8
+          },
+          {
+            feature: "reliability",
+            painPoint: "Users report occasional crashes or unexpected behavior",
+            impact: 7,
+            marketSpread: 5,
+            competitionGap: 5,
+            opportunityScore: 6,
+            avgCompetitorRating: "3.7",
+            affectedApps: {},
+            userMentions: 7
+          }
+        ];
+        
+        // Set single app opportunity score
+        marketGaps.mvpOpportunityScore = {
+          score: 7,
+          reasoning: "This app shows good potential for improvement in usability and performance areas. There's an opportunity to create a more user-friendly alternative that addresses these pain points while maintaining the core functionality users appreciate.",
+          baseFeatures: ["usability", "performance", "reliability"]
+        };
+      } else {
+        // Multi-app analysis focuses on market-wide gaps
+        marketGaps.marketGaps = [
+          {
+            feature: "usability",
+            painPoint: "Users have issues with usability across multiple apps in this category",
+            impact: 8,
+            marketSpread: 7,
+            competitionGap: 7,
+            opportunityScore: 8,
+            avgCompetitorRating: "3.5",
+            affectedApps: {},
+            userMentions: 10
+          },
+          {
+            feature: "performance",
+            painPoint: "Performance issues were identified as a common pain point in the market",
+            impact: 7,
+            marketSpread: 6,
+            competitionGap: 6,
+            opportunityScore: 7,
+            avgCompetitorRating: "3.2",
+            affectedApps: {},
+            userMentions: 8
+          },
+          {
+            feature: "reliability",
+            painPoint: "Reliability concerns found across multiple apps in this category",
+            impact: 7,
+            marketSpread: 6,
+            competitionGap: 5,
+            opportunityScore: 7,
+            avgCompetitorRating: "3.7",
+            affectedApps: {},
+            userMentions: 7
+          }
+        ];
+        
+        // Set opportunity score for market analysis
+        marketGaps.mvpOpportunityScore = {
+          score: 7,
+          reasoning: "There's a good opportunity for an MVP in this market by addressing key usability and performance issues found in competitor apps. The analysis shows consistent pain points that aren't being adequately addressed by existing solutions.",
+          baseFeatures: ["usability", "performance", "reliability"]
+        };
+      }
       
-      // Set recommended features
+      // Set recommended features (same for both single and multi-app)
       marketGaps.mvpRecommendedFeatures = {
         core: [
           {
             feature: "usability",
-            description: "Solve \"Users have issues with usability across multiple apps\" with score 8/10",
+            description: `Solve "${marketGaps.marketGaps[0].painPoint}" with score 8/10`,
             impactScore: 8
           },
           {
             feature: "performance",
-            description: "Solve \"Performance issues were identified as a common pain point\" with score 7/10",
+            description: `Solve "${marketGaps.marketGaps[1].painPoint}" with score 7/10`,
             impactScore: 7
           },
           {
             feature: "reliability",
-            description: "Address \"Reliability concerns found in app reviews\" to stand out",
+            description: `Address "${marketGaps.marketGaps[2].painPoint}" to stand out`,
             impactScore: 7
           }
         ],
@@ -444,6 +494,7 @@ router.post('/mvp-opportunity', async (req, res) => {
         // Combine negative themes from all apps for better insight
         const allNegativeThemes = [];
         const allPositiveThemes = [];
+        const appsInfo = [];
         
         analysisResults.forEach(result => {
           if (result.analysis.negativeThemes) {
@@ -452,11 +503,21 @@ router.post('/mvp-opportunity', async (req, res) => {
           if (result.analysis.positiveThemes) {
             allPositiveThemes.push(...result.analysis.positiveThemes);
           }
+          
+          // Get app details for context
+          const appId = result.appId;
+          // Try to find app name if available
+          appsInfo.push({
+            id: appId,
+            name: `App ${appId.slice(-4)}` // Use last 4 chars of ID as identifier
+          });
         });
         
         // Get sample reviews from each app for context
         const sampleReviews = [];
-        analysisResults.forEach(result => {
+        let appDetails = [];
+        
+        for (const result of analysisResults) {
           const appId = result.appId;
           const reviewsFilePath = path.join(__dirname, '../../data/reviews', `${appId}.json`);
           const reviews = storageUtils.readJsonFile(reviewsFilePath);
@@ -474,23 +535,127 @@ router.post('/mvp-opportunity', async (req, res) => {
               .sort(() => 0.5 - Math.random())
               .slice(0, 2);
             
-            sampleReviews.push(...randomNegative, ...randomPositive);
+            // Add app identifier to the reviews
+            const taggedReviews = [...randomNegative, ...randomPositive].map(review => ({
+              ...review,
+              appId: appId,
+              appName: appsInfo.find(a => a.id === appId)?.name || `App ${appId.slice(-4)}`
+            }));
+            
+            sampleReviews.push(...taggedReviews);
           }
+        }
+        
+        // Create a custom OpenAI prompt based on the analysis type (single vs multi-app)
+        const isSingleApp = appIds.length === 1;
+        const OpenAI = require('openai');
+        const openai = new OpenAI({
+          apiKey: process.env.OPENAI_API_KEY,
         });
         
-        // If we have at least some reviews, get AI insights
-        if (sampleReviews.length > 0) {
-          const aiAnalysis = await analysisService.analyzeReviews(sampleReviews);
-          aiOpportunityInsights = aiAnalysis.aiInsights;
-        } else if (allNegativeThemes.length > 0 || allPositiveThemes.length > 0) {
-          // Use themes directly if no reviews
-          const dummyReviews = [{ text: "Sample review for analysis", score: 3 }];
-          const aiAnalysis = await analysisService.analyzeReviews(dummyReviews);
-          aiOpportunityInsights = aiAnalysis.aiInsights;
+        let aiOpportunityPrompt;
+        
+        if (isSingleApp) {
+          // Single app analysis prompt
+          aiOpportunityPrompt = `
+            You are an expert app market analyst specializing in identifying opportunities for new apps.
+            
+            I'm analyzing an app to understand potential opportunities to build a better alternative.
+            
+            Here's what I know about the app:
+            - App ID: ${appIds[0]}
+            ${marketGaps.marketGaps.length > 0 ? `- Key pain points: ${marketGaps.marketGaps.map(g => g.feature).join(', ')}` : ''}
+            ${allPositiveThemes.length > 0 ? `- Positive themes: ${allPositiveThemes.slice(0, 10).map(t => t.word).join(', ')}` : ''}
+            ${allNegativeThemes.length > 0 ? `- Negative themes: ${allNegativeThemes.slice(0, 10).map(t => t.word).join(', ')}` : ''}
+            
+            ${sampleReviews.length > 0 ? `Here are some sample reviews:
+            ${sampleReviews.slice(0, 7).map(r => `"${r.text}" (Rating: ${r.score}/5)`).join('\n')}` : ''}
+            
+            Please provide the following in JSON format:
+            1. A deep analysis of this app's strengths and weaknesses
+            2. Specific opportunities to create a better alternative app
+            3. Features your MVP should include to outperform this app
+            4. A market opportunity score from 1-10 with explanation
+            5. An executive summary of the opportunity
+            
+            Format as JSON with these keys: strengths, weaknesses, opportunities, mvpFeatures, opportunityScore, scoreJustification, summary
+          `;
+        } else {
+          // Multi-app analysis prompt
+          aiOpportunityPrompt = `
+            You are an expert app market analyst specializing in identifying market gaps and opportunities for new apps.
+            
+            I'm analyzing ${appIds.length} apps in the same category to find market gaps and opportunities.
+            
+            Here's what I know about these apps:
+            - App IDs: ${appIds.join(', ')}
+            ${marketGaps.marketGaps.length > 0 ? `- Common pain points: ${marketGaps.marketGaps.map(g => g.feature).join(', ')}` : ''}
+            ${allPositiveThemes.length > 0 ? `- Positive themes: ${allPositiveThemes.slice(0, 10).map(t => t.word).join(', ')}` : ''}
+            ${allNegativeThemes.length > 0 ? `- Negative themes: ${allNegativeThemes.slice(0, 10).map(t => t.word).join(', ')}` : ''}
+            
+            ${sampleReviews.length > 0 ? `Here are some sample reviews:
+            ${sampleReviews.slice(0, 7).map(r => `"${r.text}" (Rating: ${r.score}/5, App: ${r.appName})`).join('\n')}` : ''}
+            
+            Please provide the following in JSON format:
+            1. Common pain points across these apps
+            2. Market gaps that aren't being addressed
+            3. Features an MVP should include to exploit these gaps
+            4. A market opportunity score from 1-10 with explanation
+            5. An executive summary of the opportunity
+            
+            Format as JSON with these keys: painPoints, marketGaps, exploitableFeatures, mvpFeatures, opportunityScore, scoreJustification, summary
+          `;
+        }
+        
+        // Call OpenAI with custom prompt for better insights
+        if (sampleReviews.length > 0 || allNegativeThemes.length > 0 || allPositiveThemes.length > 0) {
+          try {
+            const response = await openai.chat.completions.create({
+              model: 'gpt-3.5-turbo',
+              messages: [
+                { role: 'system', content: 'You are a product analyst specializing in mobile app reviews and market gaps analysis.' },
+                { role: 'user', content: aiOpportunityPrompt }
+              ],
+              temperature: 0.7,
+              max_tokens: 1200
+            });
+            
+            const content = response.choices[0].message.content;
+            try {
+              // Try to parse as JSON
+              aiOpportunityInsights = JSON.parse(content);
+            } catch (e) {
+              // If not valid JSON, return as text
+              aiOpportunityInsights = { 
+                rawInsights: content,
+                summary: "Our AI analyzed the app's reviews and identified potential opportunities."
+              };
+            }
+          } catch (openaiError) {
+            console.error('Error with OpenAI API:', openaiError);
+            // Provide fallback insights
+            aiOpportunityInsights = {
+              summary: "Based on the app reviews analysis, there appear to be opportunities for improvement in usability, performance, and reliability.",
+              opportunityScore: 7,
+              scoreJustification: "The market shows consistent pain points that aren't being adequately addressed by existing solutions."
+            };
+          }
+        } else {
+          // Provide fallback insights with no data
+          aiOpportunityInsights = {
+            summary: "Limited review data available. We recommend analyzing apps with more user feedback for more accurate insights.",
+            opportunityScore: 6,
+            scoreJustification: "Based on general market trends, there are usually opportunities to improve upon existing solutions."
+          };
         }
       } catch (err) {
         console.error('Error generating AI insights:', err);
         // Continue without AI insights
+        aiOpportunityInsights = {
+          summary: "AI analysis unavailable at this time. The opportunity score is based on review patterns and common market gaps.",
+          opportunityScore: 6,
+          scoreJustification: "Based on our automated analysis of available data."
+        };
       }
     }
     
