@@ -64,6 +64,46 @@ export default function Home() {
         </div>
       </div>
       
+      {/* New Feature Highlight */}
+      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 px-8 py-12 border-t border-b border-purple-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                NEW: MVP Opportunity Analyzer
+              </h2>
+              <p className="text-gray-700 mb-6">
+                Find the perfect niche for your next app by comparing similar apps and identifying common pain points. Our AI-powered analysis highlights exploitable market gaps and provides a readiness score for your MVP.
+              </p>
+              <Link 
+                href="/opportunity" 
+                className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-700 transition-colors"
+              >
+                Find Your MVP Opportunity →
+              </Link>
+            </div>
+            <div className="md:w-1/2">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-purple-100">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-xl font-bold text-gray-800">Opportunity Score</div>
+                  <div className="h-16 w-16 bg-purple-100 text-purple-800 rounded-full flex items-center justify-center text-2xl font-bold">8/10</div>
+                </div>
+                <div className="space-y-4">
+                  <div className="p-3 bg-blue-50 rounded-md border border-blue-100">
+                    <div className="font-medium text-blue-800 mb-1">Core Features</div>
+                    <p className="text-sm text-gray-700">Address these top 3 pain points for maximum impact</p>
+                  </div>
+                  <div className="p-3 bg-green-50 rounded-md border border-green-100">
+                    <div className="font-medium text-green-800 mb-1">AI Insights</div>
+                    <p className="text-sm text-gray-700">Market analysis with OpenAI-powered recommendations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Getting Started Section */}
       <div className="bg-gray-50 px-8 py-12 border-t">
         <div className="max-w-3xl mx-auto">
@@ -119,12 +159,18 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="mt-10 text-center">
+          <div className="mt-10 text-center space-x-4">
             <Link 
               href="/search" 
               className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-blue-700 transition-colors"
             >
               Start Your Research
+            </Link>
+            <Link 
+              href="/opportunity" 
+              className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-700 transition-colors"
+            >
+              Try MVP Analyzer
             </Link>
           </div>
         </div>

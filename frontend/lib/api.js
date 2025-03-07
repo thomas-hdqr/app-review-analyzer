@@ -206,3 +206,28 @@ export async function identifyMarketGaps(appIds) {
   
   return response.json();
 }
+
+/**
+ * Analyze opportunity for building an MVP based on similar apps
+ * @param {Array} appIds - List of similar app IDs to analyze
+ * @param {number} category - App category ID (optional)
+ * @returns {Promise<Object>} - MVP opportunity analysis
+ */
+export async function analyzeMVPOpportunity(appIds, category) {
+  const response = await fetch(`${API_BASE_URL}/analysis/mvp-opportunity`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 
+      appIds,
+      category
+    })
+  });
+  
+  if (!response.ok) {
+    throw new Error('Error analyzing MVP opportunity');
+  }
+  
+  return response.json();
+}

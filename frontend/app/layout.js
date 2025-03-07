@@ -37,6 +37,9 @@ export default function RootLayout({ children }) {
                   <a href="/search" className="text-blue-100 hover:text-white transition-colors px-1">
                     Search Apps
                   </a>
+                  <a href="/opportunity" className="text-blue-100 hover:text-white transition-colors px-1">
+                    MVP Opportunity
+                  </a>
                 </nav>
               </div>
             </div>

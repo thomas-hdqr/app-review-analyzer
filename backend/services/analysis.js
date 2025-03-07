@@ -179,19 +179,21 @@ async function getAIInsights(reviews, positiveThemes, negativeThemes) {
       1. What are the main pain points users experience?
       2. What features do users love the most?
       3. What market gaps or opportunities do you see?
-      4. What would be your top 3 recommendations for improving this app?
+      4. What specific features could a new app implement to exploit these gaps?
+      5. What would be your top 3 recommendations for improving this app?
+      6. Provide an opportunity score (1-10) for building a new app in this space, with justification.
       
-      Format your response as JSON with these keys: painPoints, lovedFeatures, marketGaps, recommendations.
+      Format your response as JSON with these keys: painPoints, lovedFeatures, marketGaps, exploitableFeatures, recommendations, opportunityScore, scoreJustification.
     `;
     
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: 'You are a product analyst specializing in mobile app reviews.' },
+        { role: 'system', content: 'You are a product analyst specializing in mobile app reviews and identifying market opportunities for MVP development.' },
         { role: 'user', content: prompt }
       ],
       temperature: 0.7,
-      max_tokens: 1000
+      max_tokens: 1200
     });
     
     // Parse the response
@@ -292,13 +294,18 @@ async function identifyMarketGaps(analysisResults) {
             word: theme.word,
             totalCount: 0,
             appCount: 0,
-            apps: {}
+            apps: {},
+            ratings: []
           };
         }
         
         allNegativeThemes[theme.word].totalCount += theme.count;
         allNegativeThemes[theme.word].appCount += 1;
         allNegativeThemes[theme.word].apps[result.appId] = theme.count;
+        // Store associated app rating
+        if (result.analysis.sentimentAnalysis && result.analysis.sentimentAnalysis.averageScore) {
+          allNegativeThemes[theme.word].ratings.push(result.analysis.sentimentAnalysis.averageScore);
+        }
       });
     });
     
@@ -309,27 +316,136 @@ async function identifyMarketGaps(analysisResults) {
     
     // Calculate opportunity score
     const marketGaps = sortedThemes.map(theme => {
-      const opportunityScore = Math.min(10, Math.round((theme.totalCount / 10) * theme.appCount));
+      // More sophisticated scoring algorithm
+      const userImpact = Math.min(10, Math.round(theme.totalCount / 5)); // How many users mentioned this
+      const marketSpread = Math.min(10, Math.round(theme.appCount * 2)); // How widespread is this issue
+      const avgRating = theme.ratings.length > 0 
+        ? theme.ratings.reduce((sum, rating) => sum + rating, 0) / theme.ratings.length
+        : 3; // Default to neutral if no ratings
+        
+      // Adjust opportunity score based on current app ratings
+      // Lower ratings = higher opportunity (space for improvement)
+      const ratingFactor = (5 - avgRating) / 2; // Scale: 0-2.5
+      
+      // Calculate final weighted score
+      const opportunityScore = Math.min(10, Math.round(
+        (userImpact * 0.4) + (marketSpread * 0.3) + (ratingFactor * 3)
+      ));
       
       return {
         feature: theme.word,
         painPoint: `Users across ${theme.appCount} apps complain about "${theme.word}"`,
-        impact: Math.min(10, Math.round(theme.totalCount / 5)),
+        impact: userImpact,
+        marketSpread: marketSpread,
         competitionGap: Math.min(10, Math.round(theme.appCount * 2)),
         opportunityScore,
-        affectedApps: theme.apps
+        avgCompetitorRating: avgRating.toFixed(1),
+        affectedApps: theme.apps,
+        userMentions: theme.totalCount
       };
     });
     
     return {
       marketGaps: marketGaps.slice(0, 10), // Top 10 market gaps
       analysisDate: new Date().toISOString(),
-      appsAnalyzed: analysisResults.length
+      appsAnalyzed: analysisResults.length,
+      mvpOpportunityScore: calculateMVPOpportunityScore(marketGaps),
+      mvpRecommendedFeatures: identifyMVPFeatures(marketGaps)
     };
   } catch (error) {
     console.error('Error identifying market gaps:', error);
     throw error;
   }
+}
+
+/**
+ * Calculate an overall MVP opportunity score based on market gaps
+ * @param {Array} marketGaps - List of identified market gaps
+ * @returns {Object} - MVP opportunity score and reasoning
+ */
+function calculateMVPOpportunityScore(marketGaps) {
+  if (!marketGaps || marketGaps.length === 0) {
+    return {
+      score: 0,
+      reasoning: "No market gaps identified to evaluate opportunity"
+    };
+  }
+  
+  // Take top 5 market gaps for MVP consideration
+  const topGaps = marketGaps.slice(0, 5);
+  
+  // Calculate weighted score based on top gaps
+  let totalScore = 0;
+  let totalWeight = 0;
+  
+  // Apply diminishing weights (5, 4, 3, 2, 1)
+  topGaps.forEach((gap, index) => {
+    const weight = 5 - index;
+    totalScore += gap.opportunityScore * weight;
+    totalWeight += weight;
+  });
+  
+  const weightedScore = Math.round(totalScore / totalWeight);
+  
+  // Generate reasoning based on score
+  let reasoning = "";
+  if (weightedScore >= 8) {
+    reasoning = "Strong opportunity for a new MVP with multiple high-impact gaps to address";
+  } else if (weightedScore >= 6) {
+    reasoning = "Good opportunity for an MVP with several meaningful improvements over existing apps";
+  } else if (weightedScore >= 4) {
+    reasoning = "Moderate opportunity with some potential areas for improvement";
+  } else {
+    reasoning = "Limited opportunity in this space as existing apps address most user needs";
+  }
+  
+  return {
+    score: weightedScore,
+    reasoning,
+    baseFeatures: topGaps.map(gap => gap.feature).slice(0, 3)
+  };
+}
+
+/**
+ * Identify key features for an MVP based on market gaps
+ * @param {Array} marketGaps - List of identified market gaps
+ * @returns {Object} - MVP feature recommendations
+ */
+function identifyMVPFeatures(marketGaps) {
+  if (!marketGaps || marketGaps.length === 0) {
+    return {
+      core: [],
+      differentiators: [],
+      potential: []
+    };
+  }
+  
+  // Top 3 for core features
+  const core = marketGaps.slice(0, 3).map(gap => ({
+    feature: gap.feature,
+    description: `Solve "${gap.painPoint}" with score ${gap.opportunityScore}/10`,
+    impactScore: gap.impact
+  }));
+  
+  // Next 2 for differentiators
+  const differentiators = marketGaps.slice(3, 5).map(gap => ({
+    feature: gap.feature,
+    description: `Address "${gap.painPoint}" to stand out`,
+    impactScore: gap.impact
+  }));
+  
+  // Next 5 for potential future features
+  const potential = marketGaps.slice(5, 10).map(gap => ({
+    feature: gap.feature,
+    description: `Consider for future updates`,
+    impactScore: gap.impact
+  }));
+  
+  return {
+    core,
+    differentiators,
+    potential
+  };
 }
 
 module.exports = {

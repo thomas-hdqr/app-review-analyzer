@@ -12,7 +12,8 @@ const analysisRoutes = require('./routes/analysis');
 
 // Initialize Express app
 const app = express();
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3002;
+const MAX_PORT_ATTEMPTS = 10;
 
 // Ensure data directories exist
 function ensureDirectoriesExist() {
@@ -54,9 +55,19 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  // Ensure directories exist
-  ensureDirectoriesExist();
-  console.log(`Server running on port ${PORT}`);
-});
+function startServer(port, attempt = 1) {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+    // Ensure directories exist
+    ensureDirectoriesExist();
+  }).on('error', (err) => {
+    if (err.code === 'EADDRINUSE' && attempt < MAX_PORT_ATTEMPTS) {
+      console.log(`Port ${port} is busy, trying port ${port + 1}...`);
+      startServer(port + 1, attempt + 1);
+    } else {
+      console.error('Error starting server:', err);
+    }
+  });
+}
+
+startServer(PORT);

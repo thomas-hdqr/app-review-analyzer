@@ -1,0 +1,153 @@
+{
+  "sentimentAnalysis": {
+    "positive": 14,
+    "negative": 12,
+    "neutral": 8,
+    "total": 34,
+    "averageScore": 3.235294117647059,
+    "sentimentRatio": 1.1666666666666667
+  },
+  "positiveThemes": [
+    {
+      "word": "easy",
+      "count": 8
+    },
+    {
+      "word": "everything",
+      "count": 4
+    },
+    {
+      "word": "good",
+      "count": 4
+    },
+    {
+      "word": "amazing",
+      "count": 4
+    },
+    {
+      "word": "saved",
+      "count": 4
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "work",
+      "count": 12
+    },
+    {
+      "word": "back",
+      "count": 8
+    },
+    {
+      "word": "refund",
+      "count": 6
+    },
+    {
+      "word": "didn",
+      "count": 6
+    },
+    {
+      "word": "money",
+      "count": 6
+    },
+    {
+      "word": "paid",
+      "count": 6
+    },
+    {
+      "word": "subscription",
+      "count": 6
+    },
+    {
+      "word": "bought",
+      "count": 4
+    },
+    {
+      "word": "scammed",
+      "count": 4
+    },
+    {
+      "word": "account",
+      "count": 4
+    },
+    {
+      "word": "want",
+      "count": 4
+    },
+    {
+      "word": "overall",
+      "count": 4
+    },
+    {
+      "word": "entry",
+      "count": 4
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "work",
+      "painPoint": "Users complain about \"work\" but it's not mentioned positively",
+      "count": 12,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "back",
+      "painPoint": "Users complain about \"back\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "refund",
+      "painPoint": "Users complain about \"refund\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "didn",
+      "painPoint": "Users complain about \"didn\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "money",
+      "painPoint": "Users complain about \"money\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "paid",
+      "painPoint": "Users complain about \"paid\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "subscription",
+      "painPoint": "Users complain about \"subscription\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "bought",
+      "painPoint": "Users complain about \"bought\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "scammed",
+      "painPoint": "Users complain about \"scammed\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "account",
+      "painPoint": "Users complain about \"account\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 8
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Users experiencing issues with app not working after payment\",\n    \"Difficulty in getting refunds for malfunctioning app\",\n    \"App crashing and losing user data\",\n    \"Inability to manually add data in certain sections\",\n    \"Lack of clarity on subscription benefits and usage\"\n  ],\n  \"lovedFeatures\": [\n    \"Ease of use and simplicity in app navigation\",\n    \"Time-saving features like taking pictures of food for tracking\",\n    \"Thoroughness and clarity in app instructions\"\n  ],\n  \"marketGaps\": [\n    \"Improving app reliability and stability post-payment\",\n    \"Enhancing customer service for refund requests and technical support\",\n    \"Adding manual data entry capabilities for more flexibility\"\n  ],\n  \"recommendations\": [\n    \"Implement rigorous testing to ensure app stability after payment and subscription activation\",\n    \"Enhance customer support channels for quicker issue resolution and refund processing\",\n    \"Introduce manual data entry feature for users to input information not tracked automatically\"\n  ]\n}\n```  "
+  },
+  "reviewCount": 34,
+  "lastUpdated": "2025-03-07T10:20:34.879Z"
+}

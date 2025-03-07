@@ -1,0 +1,115 @@
+{
+  "sentimentAnalysis": {
+    "positive": 184,
+    "negative": 8,
+    "neutral": 8,
+    "total": 200,
+    "averageScore": 4.69,
+    "sentimentRatio": 23
+  },
+  "positiveThemes": [
+    {
+      "word": "love",
+      "count": 149
+    },
+    {
+      "word": "happy",
+      "count": 65
+    },
+    {
+      "word": "things",
+      "count": 57
+    },
+    {
+      "word": "life",
+      "count": 53
+    },
+    {
+      "word": "gratitude",
+      "count": 52
+    },
+    {
+      "word": "happyfeed",
+      "count": 47
+    },
+    {
+      "word": "good",
+      "count": 46
+    },
+    {
+      "word": "great",
+      "count": 43
+    },
+    {
+      "word": "journal",
+      "count": 43
+    },
+    {
+      "word": "daily",
+      "count": 42
+    },
+    {
+      "word": "years",
+      "count": 40
+    },
+    {
+      "word": "see",
+      "count": 38
+    },
+    {
+      "word": "easy",
+      "count": 38
+    },
+    {
+      "word": "back",
+      "count": 37
+    },
+    {
+      "word": "memories",
+      "count": 36
+    },
+    {
+      "word": "look",
+      "count": 33
+    },
+    {
+      "word": "grateful",
+      "count": 33
+    },
+    {
+      "word": "amazing",
+      "count": 31
+    },
+    {
+      "word": "way",
+      "count": 30
+    },
+    {
+      "word": "moments",
+      "count": 30
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "entries",
+      "count": 5
+    },
+    {
+      "word": "look",
+      "count": 3
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "entries",
+      "painPoint": "Users complain about \"entries\" but it's not mentioned positively",
+      "count": 5,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Difficulty in accessing past entries without premium\",\n    \"Inconsistency in reminders and notifications\",\n    \"Lack of options for quotes and photos for writing\"\n  ],\n  \"lovedFeatures\": [\n    \"Ability to add photos and short notes daily\",\n    \"Motivating streak counts and memories\",\n    \"Positive impact on mental health through gratitude practice\"\n  ],\n  \"marketGaps\": [\n    \"Limited free access to past entries\",\n    \"Opportunity to enhance customization with quotes and photos\",\n    \"Potential for more personalized reminders and prompts\"\n  ],\n  \"exploitableFeatures\": [\n    \"Offering better access to past entries as a premium feature\",\n    \"Integrating more customization options for quotes and photos\",\n    \"Improving reminder and notification customization\"\n  ],\n  \"recommendations\": [\n    \"Enhance free access to past entries for better user experience\",\n    \"Introduce more customization features for quotes and photos\",\n    \"Improve reminder and notification settings for user preferences\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"The positive sentiment and high user engagement indicate a strong market interest in gratitude journaling apps. Addressing pain points and enhancing features can lead to a successful app in this space.\"\n}\n```  "
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-07T10:38:19.966Z"
+}

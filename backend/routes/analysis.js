@@ -235,4 +235,117 @@ router.post('/market-gaps', async (req, res) => {
   }
 });
 
+/**
+ * @route   POST /api/analysis/mvp-opportunity
+ * @desc    Analyze opportunity for MVP development based on similar apps
+ * @access  Public
+ */
+router.post('/mvp-opportunity', async (req, res) => {
+  try {
+    const { appIds, category } = req.body;
+    
+    if (!appIds || !Array.isArray(appIds) || appIds.length < 2) {
+      return res.status(400).json({ 
+        error: true, 
+        message: 'Please provide at least two similar app IDs to analyze' 
+      });
+    }
+    
+    // Get analysis for each app
+    const analysisResults = [];
+    const appDetails = [];
+    
+    for (const appId of appIds) {
+      const analysisFilePath = path.join(__dirname, '../../data/analysis', `${appId}.json`);
+      const analysis = storageUtils.readJsonFile(analysisFilePath);
+      
+      if (analysis) {
+        analysisResults.push({
+          appId,
+          analysis
+        });
+      }
+    }
+    
+    if (analysisResults.length < 2) {
+      return res.status(404).json({ 
+        error: true, 
+        message: 'Not enough analysis data found. Please analyze at least two apps first.' 
+      });
+    }
+    
+    // Generate market gaps analysis
+    const marketGaps = await analysisService.identifyMarketGaps(analysisResults);
+    
+    // Enhance with OpenAI insights if available
+    let aiOpportunityInsights = null;
+    
+    // Get OpenAI API configuration from environment
+    if (process.env.OPENAI_API_KEY && analysisResults.length > 0) {
+      // Combine negative themes from all apps for better insight
+      const allNegativeThemes = [];
+      const allPositiveThemes = [];
+      
+      analysisResults.forEach(result => {
+        if (result.analysis.negativeThemes) {
+          allNegativeThemes.push(...result.analysis.negativeThemes);
+        }
+        if (result.analysis.positiveThemes) {
+          allPositiveThemes.push(...result.analysis.positiveThemes);
+        }
+      });
+      
+      // Get sample reviews from each app for context
+      const sampleReviews = [];
+      analysisResults.forEach(result => {
+        const appId = result.appId;
+        const reviewsFilePath = path.join(__dirname, '../../data/reviews', `${appId}.json`);
+        const reviews = storageUtils.readJsonFile(reviewsFilePath);
+        
+        if (reviews && reviews.length > 0) {
+          // Add 5 random negative reviews
+          const negativeReviews = reviews.filter(review => review.score <= 2);
+          const randomNegative = negativeReviews
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 5);
+          
+          sampleReviews.push(...randomNegative);
+        }
+      });
+      
+      // Get AI insights using the analyzeReviews function
+      if (sampleReviews.length > 0) {
+        const aiAnalysis = await analysisService.analyzeReviews(sampleReviews);
+        aiOpportunityInsights = aiAnalysis.aiInsights;
+      }
+    }
+    
+    // Combine everything into a comprehensive MVP opportunity report
+    const mvpOpportunityReport = {
+      marketGaps: marketGaps.marketGaps.slice(0, 5),
+      mvpOpportunityScore: marketGaps.mvpOpportunityScore,
+      mvpRecommendedFeatures: marketGaps.mvpRecommendedFeatures,
+      aiInsights: aiOpportunityInsights,
+      appsAnalyzed: appIds,
+      analysisDate: new Date().toISOString(),
+      category: category || 'Unknown'
+    };
+    
+    // Save the report
+    const reportPath = path.join(__dirname, '../../data/reports', `mvp_opportunity_${new Date().toISOString().split('T')[0]}.json`);
+    storageUtils.writeJsonFile(reportPath, mvpOpportunityReport);
+    
+    res.json({
+      success: true,
+      data: mvpOpportunityReport
+    });
+  } catch (error) {
+    console.error('Error analyzing MVP opportunity:', error);
+    res.status(500).json({ 
+      error: true, 
+      message: 'Error analyzing MVP opportunity' 
+    });
+  }
+});
+
 module.exports = router; 

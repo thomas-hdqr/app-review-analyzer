@@ -1,0 +1,241 @@
+{
+  "sentimentAnalysis": {
+    "positive": 159,
+    "negative": 33,
+    "neutral": 8,
+    "total": 200,
+    "averageScore": 4.27,
+    "sentimentRatio": 4.818181818181818
+  },
+  "positiveThemes": [
+    {
+      "word": "jomo",
+      "count": 112
+    },
+    {
+      "word": "screen",
+      "count": 96
+    },
+    {
+      "word": "apps",
+      "count": 82
+    },
+    {
+      "word": "great",
+      "count": 64
+    },
+    {
+      "word": "really",
+      "count": 63
+    },
+    {
+      "word": "love",
+      "count": 57
+    },
+    {
+      "word": "best",
+      "count": 50
+    },
+    {
+      "word": "phone",
+      "count": 46
+    },
+    {
+      "word": "team",
+      "count": 31
+    },
+    {
+      "word": "much",
+      "count": 28
+    },
+    {
+      "word": "social",
+      "count": 27
+    },
+    {
+      "word": "media",
+      "count": 27
+    },
+    {
+      "word": "life",
+      "count": 26
+    },
+    {
+      "word": "block",
+      "count": 26
+    },
+    {
+      "word": "opal",
+      "count": 24
+    },
+    {
+      "word": "control",
+      "count": 23
+    },
+    {
+      "word": "well",
+      "count": 22
+    },
+    {
+      "word": "set",
+      "count": 22
+    },
+    {
+      "word": "features",
+      "count": 22
+    },
+    {
+      "word": "lot",
+      "count": 21
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "account",
+      "count": 16
+    },
+    {
+      "word": "jomo",
+      "count": 12
+    },
+    {
+      "word": "apps",
+      "count": 11
+    },
+    {
+      "word": "screen",
+      "count": 10
+    },
+    {
+      "word": "doesn",
+      "count": 10
+    },
+    {
+      "word": "money",
+      "count": 8
+    },
+    {
+      "word": "deleted",
+      "count": 7
+    },
+    {
+      "word": "settings",
+      "count": 7
+    },
+    {
+      "word": "mode",
+      "count": 7
+    },
+    {
+      "word": "frustrating",
+      "count": 6
+    },
+    {
+      "word": "set",
+      "count": 6
+    },
+    {
+      "word": "try",
+      "count": 6
+    },
+    {
+      "word": "blocking",
+      "count": 6
+    },
+    {
+      "word": "many",
+      "count": 6
+    },
+    {
+      "word": "know",
+      "count": 6
+    },
+    {
+      "word": "block",
+      "count": 6
+    },
+    {
+      "word": "strict",
+      "count": 6
+    },
+    {
+      "word": "apple",
+      "count": 6
+    },
+    {
+      "word": "phone",
+      "count": 5
+    },
+    {
+      "word": "works",
+      "count": 5
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "account",
+      "painPoint": "Users complain about \"account\" but it's not mentioned positively",
+      "count": 16,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "doesn",
+      "painPoint": "Users complain about \"doesn\" but it's not mentioned positively",
+      "count": 10,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "money",
+      "painPoint": "Users complain about \"money\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "deleted",
+      "painPoint": "Users complain about \"deleted\" but it's not mentioned positively",
+      "count": 7,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "settings",
+      "painPoint": "Users complain about \"settings\" but it's not mentioned positively",
+      "count": 7,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "mode",
+      "painPoint": "Users complain about \"mode\" but it's not mentioned positively",
+      "count": 7,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "frustrating",
+      "painPoint": "Users complain about \"frustrating\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "try",
+      "painPoint": "Users complain about \"try\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "blocking",
+      "painPoint": "Users complain about \"blocking\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "many",
+      "painPoint": "Users complain about \"many\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"App crashing when trying to unblock apps\",\n    \"Loss of progress and settings due to lack of account creation awareness\",\n    \"Bug causing disconnect from Apple ScreenTime, leading to unintended app blocking or unblocking\"\n  ],\n  \"lovedFeatures\": [\n    \"Customization options for reducing screen time\",\n    \"Emphasis on emotional connection over strict blocking\",\n    \"Insightful prompts and research excerpts at block screens\",\n    \"Integration with Shortcuts for added convenience\"\n  ],\n  \"marketGaps\": [\n    \"Need for more reliable account management and data backup options\",\n    \"Opportunity to address bugs related to Apple ScreenTime integration\",\n    \"Potential to offer more affordable pricing options compared to competitors like Opal\"\n  ],\n  \"exploitableFeatures\": [\n    \"Improved account creation and data backup functionality to prevent loss of progress\",\n    \"Enhanced integration with Apple ScreenTime for seamless usage\",\n    \"Introducing more competitive pricing plans to attract cost-conscious users\"\n  ],\n  \"recommendations\": [\n    \"Implement a more user-friendly account creation process with clear instructions and data backup options\",\n    \"Address bugs related to Apple ScreenTime integration for a smoother user experience\",\n    \"Consider revising pricing strategies to offer more value and affordability to users\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"The app has garnered positive reviews for its features and potential, but there are clear pain points that need to be addressed. By improving account management, fixing bugs, and adjusting pricing, a new app could effectively enter this market and capture a significant user base.\"\n}\n```  "
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-07T10:30:07.670Z"
+}

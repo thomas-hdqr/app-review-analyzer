@@ -1,0 +1,139 @@
+{
+  "sentimentAnalysis": {
+    "positive": 192,
+    "negative": 4,
+    "neutral": 4,
+    "total": 200,
+    "averageScore": 4.815,
+    "sentimentRatio": 48
+  },
+  "positiveThemes": [
+    {
+      "word": "great",
+      "count": 58
+    },
+    {
+      "word": "apps",
+      "count": 54
+    },
+    {
+      "word": "really",
+      "count": 40
+    },
+    {
+      "word": "love",
+      "count": 39
+    },
+    {
+      "word": "screen",
+      "count": 36
+    },
+    {
+      "word": "helps",
+      "count": 36
+    },
+    {
+      "word": "social",
+      "count": 35
+    },
+    {
+      "word": "helped",
+      "count": 33
+    },
+    {
+      "word": "media",
+      "count": 33
+    },
+    {
+      "word": "helpful",
+      "count": 32
+    },
+    {
+      "word": "need",
+      "count": 31
+    },
+    {
+      "word": "good",
+      "count": 31
+    },
+    {
+      "word": "recommend",
+      "count": 31
+    },
+    {
+      "word": "much",
+      "count": 30
+    },
+    {
+      "word": "phone",
+      "count": 26
+    },
+    {
+      "word": "free",
+      "count": 26
+    },
+    {
+      "word": "easy",
+      "count": 25
+    },
+    {
+      "word": "highly",
+      "count": 23
+    },
+    {
+      "word": "works",
+      "count": 22
+    },
+    {
+      "word": "way",
+      "count": 18
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "websites",
+      "count": 5
+    },
+    {
+      "word": "much",
+      "count": 3
+    },
+    {
+      "word": "set",
+      "count": 3
+    },
+    {
+      "word": "unblock",
+      "count": 3
+    },
+    {
+      "word": "apps",
+      "count": 3
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "websites",
+      "painPoint": "Users complain about \"websites\" but it's not mentioned positively",
+      "count": 5,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "set",
+      "painPoint": "Users complain about \"set\" but it's not mentioned positively",
+      "count": 3,
+      "opportunityScore": 6
+    },
+    {
+      "feature": "unblock",
+      "painPoint": "Users complain about \"unblock\" but it's not mentioned positively",
+      "count": 3,
+      "opportunityScore": 6
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Paying for endorsements\",\n    \"Paying for features in other similar apps\",\n    \"Difficulty in unblocking apps/websites\"\n  ],\n  \"lovedFeatures\": [\n    \"Effective in reducing distractions\",\n    \"Strict time duration control\",\n    \"Ease of use\",\n    \"Variety of free options\",\n    \"Ability to resist checking phone frequently\"\n  ],\n  \"marketGaps\": [\n    \"Limited paywalls compared to competitors\",\n    \"Effective time management and focus features\",\n    \"Balanced approach between free and paid features\"\n  ],\n  \"exploitableFeatures\": [\n    \"Introduce more enticing paid features while keeping essential functions free\",\n    \"Enhance time management tools and strict control options\",\n    \"Improve on the resistance mechanism to reduce phone usage\"\n  ],\n  \"recommendations\": [\n    \"Offer a wider range of paid features without compromising the core functionality\",\n    \"Enhance the app's time management tools and customization options\",\n    \"Implement a more advanced resistance mechanism to further reduce screen time\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"There is a clear market demand for an app that effectively helps users manage screen time and distractions, especially with positive user feedback and identified market gaps. By enhancing the existing features and addressing the pain points, a new app can capture a significant portion of this market.\"\n}\n```"
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-07T10:38:42.208Z"
+}

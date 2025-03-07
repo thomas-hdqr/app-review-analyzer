@@ -55,6 +55,24 @@ export default function ThemeCloud({ themes, type = 'positive' }) {
       text: 'text-red-800',
       count: 'text-red-600',
       title: 'Negative Themes'
+    },
+    opportunity: {
+      bg: 'bg-purple-100',
+      text: 'text-purple-800',
+      count: 'text-purple-600',
+      title: 'Market Opportunities'
+    },
+    mvp: {
+      bg: 'bg-amber-100',
+      text: 'text-amber-800',
+      count: 'text-amber-600',
+      title: 'Recommended MVP Features'
+    },
+    gap: {
+      bg: 'bg-blue-100',
+      text: 'text-blue-800',
+      count: 'text-blue-600',
+      title: 'Market Gaps'
     }
   };
   
@@ -86,7 +104,15 @@ export default function ThemeCloud({ themes, type = 'positive' }) {
         <p className="text-sm text-gray-600">
           {type === 'positive' 
             ? 'These are the most mentioned positive aspects in user reviews.' 
-            : 'These are the most common complaints or issues mentioned in user reviews.'}
+            : type === 'negative'
+            ? 'These are the most common complaints or issues mentioned in user reviews.'
+            : type === 'opportunity'
+            ? 'These are potential market opportunities based on app review analysis.'
+            : type === 'mvp'
+            ? 'These are recommended features for an MVP based on market analysis.'
+            : type === 'gap'
+            ? 'These are market gaps identified across multiple similar apps.'
+            : 'Themes identified from review analysis.'}
         </p>
       </div>
     </div>
