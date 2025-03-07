@@ -25,14 +25,14 @@ export default function RootLayout({ children }) {
         <meta name="description" content="Find market gaps by analyzing iOS app reviews" />
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen bg-gray-50">
-          <header className="bg-white shadow">
+        <div className="min-h-screen bg-black">
+          <header className="border-b border-[#2c2c2e]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between h-16">
                 <div className="flex">
                   <div className="flex-shrink-0 flex items-center">
-                    <Link href="/" className="text-xl font-bold text-blue-600">
-                      App Review Analyzer
+                    <Link href="/" className="text-xl font-bold text-white">
+                      <span className="text-[#ff453a] glow-text">App</span>Review Analyzer
                     </Link>
                   </div>
                   <nav className="ml-6 flex space-x-8">
@@ -40,8 +40,8 @@ export default function RootLayout({ children }) {
                       href="/"
                       className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                         isActive('/') 
-                          ? 'border-blue-500 text-blue-600' 
-                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                          ? 'border-[#ff453a] text-white' 
+                          : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700'
                       }`}
                     >
                       Home
@@ -50,8 +50,8 @@ export default function RootLayout({ children }) {
                       href="/search"
                       className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                         isActive('/search') 
-                          ? 'border-blue-500 text-blue-600' 
-                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                          ? 'border-[#ff453a] text-white' 
+                          : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700'
                       }`}
                     >
                       Search
@@ -60,8 +60,8 @@ export default function RootLayout({ children }) {
                       href="/reports"
                       className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                         isActive('/reports') 
-                          ? 'border-blue-500 text-blue-600' 
-                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                          ? 'border-[#ff453a] text-white' 
+                          : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700'
                       }`}
                     >
                       Reports
@@ -70,8 +70,8 @@ export default function RootLayout({ children }) {
                       href="/market-gaps"
                       className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                         isActive('/market-gaps') || isActive('/opportunity')
-                          ? 'border-blue-500 text-blue-600' 
-                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                          ? 'border-[#ff453a] text-white' 
+                          : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700'
                       }`}
                     >
                       Market Gaps
@@ -92,11 +92,47 @@ export default function RootLayout({ children }) {
             </div>
           </main>
           
-          <footer className="bg-white">
-            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-              <p className="text-center text-sm text-gray-500">
-                App Review Analyzer - A tool for indie hackers to find market gaps
-              </p>
+          <footer className="border-t border-[#2c2c2e] mt-12">
+            <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-4">App Review Analyzer</h3>
+                  <p className="text-gray-400">
+                    A powerful tool for indie hackers to find market gaps by analyzing iOS app reviews.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link href="/" className="text-gray-400 hover:text-white">
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/search" className="text-gray-400 hover:text-white">
+                        Search Apps
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/market-gaps" className="text-gray-400 hover:text-white">
+                        Market Gaps
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-4">About</h3>
+                  <p className="text-gray-400">
+                    Built with Next.js, Express, and natural language processing to help you discover opportunities in the App Store.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-8 pt-8 border-t border-[#2c2c2e] text-center">
+                <p className="text-sm text-gray-500">
+                  © {new Date().getFullYear()} App Review Analyzer. All rights reserved.
+                </p>
+              </div>
             </div>
           </footer>
         </div>

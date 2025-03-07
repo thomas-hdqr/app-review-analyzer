@@ -2,11 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  
+  --card: #111111;
+  --card-foreground: #ffffff;
+  
+  --primary: #ff453a;
+  --primary-foreground: #ffffff;
+  
+  --secondary: #1c1c1e;
+  --secondary-foreground: #ffffff;
+  
+  --accent: #ff453a;
+  --accent-foreground: #ffffff;
+  
+  --muted: #2c2c2e;
+  --muted-foreground: #a1a1a6;
+  
+  --destructive: #ff453a;
+  --destructive-foreground: #ffffff;
+
+  --border: #2c2c2e;
+  --input: #2c2c2e;
+  
+  --blue-accent: #0a84ff;
+  --green-accent: #30d158;
+  --purple-accent: #bf5af2;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
 @layer components {
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .raycast-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, #ff2d55 100%);
+  }
+  
+  .raycast-card {
+    @apply bg-[#111111] border border-[#2c2c2e] rounded-xl shadow-lg overflow-hidden;
+  }
+  
+  .raycast-button {
+    @apply px-4 py-2 rounded-lg font-medium transition-all;
+  }
+  
+  .raycast-button-primary {
+    @apply raycast-button bg-[#ff453a] text-white hover:bg-[#ff2d55];
+  }
+  
+  .raycast-button-secondary {
+    @apply raycast-button bg-[#2c2c2e] text-white hover:bg-[#3a3a3c];
+  }
+  
+  .raycast-input {
+    @apply bg-[#1c1c1e] border border-[#2c2c2e] rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#ff453a] focus:border-transparent;
+  }
+  
+  .raycast-select {
+    @apply bg-[#1c1c1e] border border-[#2c2c2e] rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#ff453a] focus:border-transparent;
+  }
+  
+  .raycast-card-blue {
+    @apply bg-[#0a84ff]/10 border border-[#0a84ff]/30 rounded-xl;
+  }
+  
+  .raycast-card-green {
+    @apply bg-[#30d158]/10 border border-[#30d158]/30 rounded-xl;
+  }
+  
+  .raycast-card-purple {
+    @apply bg-[#bf5af2]/10 border border-[#bf5af2]/30 rounded-xl;
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 10px rgba(255, 69, 58, 0.5);
+  }
+  
+  .glow-box {
+    box-shadow: 0 0 20px rgba(255, 69, 58, 0.3);
   }
 }
