@@ -12,12 +12,20 @@ export default function Home() {
           <p className="text-xl mb-8">
             Analyze app reviews to discover what users love, what they hate, and where opportunities exist.
           </p>
-          <Link 
-            href="/search" 
-            className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-gray-100 transition-colors"
-          >
-            Start Analyzing
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link 
+              href="/search" 
+              className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-gray-100 transition-colors"
+            >
+              Start Analyzing
+            </Link>
+            <Link 
+              href="/market-gaps" 
+              className="inline-block bg-blue-500 bg-opacity-30 text-white border border-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-opacity-40 transition-colors"
+            >
+              Explore Market Gaps
+            </Link>
+          </div>
         </div>
       </div>
       
@@ -159,19 +167,53 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="mt-10 text-center space-x-4">
-            <Link 
-              href="/search" 
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-blue-700 transition-colors"
-            >
-              Start Your Research
-            </Link>
-            <Link 
-              href="/opportunity" 
-              className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-700 transition-colors"
-            >
-              Try MVP Analyzer
-            </Link>
+          <div className="mt-10 text-center">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link 
+                href="/search" 
+                className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-blue-700 transition-colors"
+              >
+                Start Your Research
+              </Link>
+              <Link 
+                href="/reports" 
+                className="inline-block bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-gray-300 transition-colors"
+              >
+                View Saved Reports
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Market Gaps Section */}
+      <div className="px-8 py-12 border-t">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-8">Find Market Gaps Across Multiple Apps</h2>
+          
+          <div className="bg-blue-50 rounded-lg p-6 mb-8">
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="flex-1 mb-6 md:mb-0 md:mr-6">
+                <h3 className="text-xl font-semibold text-blue-800 mb-2">Compare Multiple Apps</h3>
+                <p className="text-blue-700 mb-4">
+                  Take your market research to the next level by analyzing common pain points across multiple apps in the same category.
+                </p>
+                <ul className="list-disc list-inside text-blue-700 space-y-1">
+                  <li>Identify trends across competitors</li>
+                  <li>Find common user complaints</li>
+                  <li>Discover unmet needs in the market</li>
+                  <li>Prioritize features for your MVP</li>
+                </ul>
+              </div>
+              <div className="flex-shrink-0">
+                <Link 
+                  href="/market-gaps" 
+                  className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-blue-700 transition-colors"
+                >
+                  Analyze Market Gaps
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

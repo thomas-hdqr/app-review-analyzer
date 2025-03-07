@@ -95,7 +95,7 @@ router.get('/:id/similar', async (req, res) => {
 });
 
 /**
- * @route   GET /api/apps/categories
+ * @route   GET /api/apps/categories/list
  * @desc    Get list of app categories
  * @access  Public
  */
@@ -112,7 +112,17 @@ router.get('/categories/list', async (req, res) => {
       { id: 6016, name: 'Travel' },
       { id: 6023, name: 'Food & Drink' },
       { id: 6013, name: 'Sports' },
-      { id: 6012, name: 'Lifestyle' }
+      { id: 6012, name: 'Lifestyle' },
+      { id: 6000, name: 'Business' },
+      { id: 6001, name: 'Education' },
+      { id: 6003, name: 'Utilities' },
+      { id: 6004, name: 'Entertainment' },
+      { id: 6006, name: 'Music' },
+      { id: 6009, name: 'Games' },
+      { id: 6010, name: 'Books' },
+      { id: 6011, name: 'News' },
+      { id: 6018, name: 'Medical' },
+      { id: 6020, name: 'Navigation' }
     ];
     
     res.json({

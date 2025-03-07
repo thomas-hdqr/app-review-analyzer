@@ -24,6 +24,20 @@ export default function SearchPage() {
       } catch (err) {
         console.error('Error fetching categories:', err);
         setError('Failed to load categories. Please try again later.');
+        
+        // Fallback categories in case the API call fails
+        setCategories([
+          { id: 6002, name: 'Weather' },
+          { id: 6007, name: 'Productivity' },
+          { id: 6008, name: 'Photo & Video' },
+          { id: 6017, name: 'Health & Fitness' },
+          { id: 6015, name: 'Finance' },
+          { id: 6005, name: 'Social Networking' },
+          { id: 6016, name: 'Travel' },
+          { id: 6023, name: 'Food & Drink' },
+          { id: 6013, name: 'Sports' },
+          { id: 6012, name: 'Lifestyle' }
+        ]);
       }
     }
 
