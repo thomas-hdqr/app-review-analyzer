@@ -21,6 +21,77 @@ A tool for indie hackers to find market gaps by analyzing iOS app reviews.
   - react-query for data fetching
   - chart.js for visualizations
 
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/app-review-analyzer.git
+   cd app-review-analyzer
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   cd frontend && npm install && cd ..
+   ```
+
+3. Create a `.env` file in the root directory (optional)
+   ```
+   PORT=3002
+   # Optional: OpenAI API key for deeper analysis
+   # OPENAI_API_KEY=your_openai_api_key
+   ```
+
+### Running the Application
+
+#### Option 1: Using the start-dev script (Recommended)
+
+This script will start both the backend and frontend servers and automatically configure them to work together:
+
+```bash
+npm run start-dev
+```
+
+#### Option 2: Starting servers separately
+
+1. Start the backend server
+   ```bash
+   npm run dev:backend
+   ```
+
+2. In a separate terminal, start the frontend server
+   ```bash
+   npm run dev:frontend
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Troubleshooting
+
+### API Connection Issues
+
+If you see "API server connection error" in the frontend:
+
+1. Make sure the backend server is running on port 3002
+2. Check the backend console for any error messages
+3. Verify that the API URL in `frontend/lib/api.js` matches the port your backend is running on
+4. Try restarting both servers
+
+### Port Conflicts
+
+If the backend server fails to start due to a port conflict:
+
+1. Change the PORT in your .env file
+2. Update the API_BASE_URL in `frontend/lib/api.js` to match the new port
+3. Restart both servers
+
 ## Project Structure
 
 ```
@@ -46,10 +117,11 @@ app-review-analyzer/
 │   │   │   └── page.js
 │   │   ├── app/[id]/         # App details page
 │   │   │   └── page.js
-│   │   └── analysis/[id]/    # Analysis results page
+│   │   ├── reports/          # Reports page
+│   │   │   └── page.js
+│   │   └── market-gaps/      # Market gaps page
 │   │       └── page.js
 │   ├── components/           # Reusable components
-│   │   ├── ui/               # UI components
 │   │   ├── AppCard.js        # App display card
 │   │   ├── ReviewList.js     # Review display component
 │   │   ├── SentimentChart.js # Sentiment visualization
@@ -63,16 +135,10 @@ app-review-analyzer/
 │   ├── analysis/             # Analysis results
 │   └── reports/              # Saved reports
 │
+├── start-dev.js              # Script to start both servers
 ├── package.json              # Project dependencies
 └── README.md                 # Project documentation
 ```
-
-## Getting Started
-
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start the development server: `npm run dev`
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Rate Limiting Considerations
 

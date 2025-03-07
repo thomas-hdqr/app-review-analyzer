@@ -27,6 +27,7 @@ export default function AppDetailsPage() {
     analysis: null
   });
   const [activeTab, setActiveTab] = useState('overview');
+  const [reviewFilter, setReviewFilter] = useState('all');
 
   useEffect(() => {
     async function fetchData() {

@@ -1,0 +1,170 @@
+{
+  "sentimentAnalysis": {
+    "positive": 4,
+    "negative": 0,
+    "neutral": 0,
+    "total": 4,
+    "averageScore": 5,
+    "sentimentRatio": 4
+  },
+  "positiveThemes": [
+    {
+      "word": "useful",
+      "count": 6
+    },
+    {
+      "word": "really",
+      "count": 4
+    },
+    {
+      "word": "started",
+      "count": 4
+    },
+    {
+      "word": "helped",
+      "count": 2
+    },
+    {
+      "word": "control",
+      "count": 2
+    },
+    {
+      "word": "calorie",
+      "count": 2
+    },
+    {
+      "word": "intake",
+      "count": 2
+    },
+    {
+      "word": "amazing",
+      "count": 2
+    },
+    {
+      "word": "job",
+      "count": 2
+    },
+    {
+      "word": "analysing",
+      "count": 2
+    },
+    {
+      "word": "foods",
+      "count": 2
+    },
+    {
+      "word": "simplifies",
+      "count": 2
+    },
+    {
+      "word": "whole",
+      "count": 2
+    },
+    {
+      "word": "process",
+      "count": 2
+    },
+    {
+      "word": "keep",
+      "count": 2
+    },
+    {
+      "word": "recommend",
+      "count": 2
+    },
+    {
+      "word": "calories",
+      "count": 2
+    },
+    {
+      "word": "already",
+      "count": 2
+    },
+    {
+      "word": "showing",
+      "count": 2
+    },
+    {
+      "word": "promising",
+      "count": 2
+    },
+    {
+      "word": "results",
+      "count": 2
+    },
+    {
+      "word": "186lbs",
+      "count": 2
+    },
+    {
+      "word": "182lbs",
+      "count": 2
+    },
+    {
+      "word": "let",
+      "count": 2
+    },
+    {
+      "word": "see",
+      "count": 2
+    },
+    {
+      "word": "far",
+      "count": 2
+    },
+    {
+      "word": "take",
+      "count": 2
+    },
+    {
+      "word": "interaction",
+      "count": 2
+    },
+    {
+      "word": "intuitive",
+      "count": 2
+    },
+    {
+      "word": "easily",
+      "count": 2
+    }
+  ],
+  "negativeThemes": [],
+  "marketGaps": [
+    {
+      "feature": "useful",
+      "painPoint": "Users like \"useful\" but it could be improved further",
+      "count": 6,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "really",
+      "painPoint": "Users like \"really\" but it could be improved further",
+      "count": 4,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "started",
+      "painPoint": "Users like \"started\" but it could be improved further",
+      "count": 4,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "helped",
+      "painPoint": "Users like \"helped\" but it could be improved further",
+      "count": 2,
+      "opportunityScore": 5
+    },
+    {
+      "feature": "control",
+      "painPoint": "Users like \"control\" but it could be improved further",
+      "count": 2,
+      "opportunityScore": 5
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [],\n  \"lovedFeatures\": [\"calorie control\", \"AI food analysis\", \"simplified process\", \"intuitive interaction\"],\n  \"marketGaps\": [\"Opportunity to capitalize on the success of calorie tracking and AI in weight management apps\", \"Potential to target users looking for effective and user-friendly tools for weight loss and diet tracking\"],\n  \"exploitableFeatures\": [\"Enhanced AI for more accurate food analysis\", \"Integration with fitness trackers for a holistic health approach\", \"Personalized meal planning based on user preferences and goals\"],\n  \"recommendations\": [\"Enhance user engagement through gamification elements\", \"Implement social sharing features for accountability and community support\", \"Offer premium features like personalized coaching or advanced analytics\"],\n  \"opportunityScore\": 9,\n  \"scoreJustification\": \"The market for weight management apps is growing, and there is a clear demand for user-friendly tools like the one described in the reviews. With the right features and marketing strategy, a new app in this space has great potential for success.\"\n}\n```  "
+  },
+  "reviewCount": 4,
+  "lastUpdated": "2025-03-07T14:43:33.626Z"
+}
