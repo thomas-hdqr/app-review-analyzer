@@ -61,7 +61,7 @@ export default function OpportunityPage() {
           setSelectedApps(validApps);
           
           // Auto-analyze if we have apps
-          if (validApps.length >= 2) {
+          if (validApps.length >= 1) {
             analyzeOpportunity(validApps.map(app => app.trackId || app.id));
           }
         })
@@ -135,8 +135,8 @@ export default function OpportunityPage() {
     // Use provided app IDs or get from selected apps
     const ids = appIds || selectedApps.map(app => app.trackId);
     
-    if (ids.length < 2) {
-      setError('Please select at least 2 apps to compare');
+    if (ids.length < 1) {
+      setError('Please select at least one app to analyze');
       return;
     }
     

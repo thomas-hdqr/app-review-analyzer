@@ -1,0 +1,321 @@
+{
+  "sentimentAnalysis": {
+    "positive": 151,
+    "negative": 36,
+    "neutral": 13,
+    "total": 200,
+    "averageScore": 4.145,
+    "sentimentRatio": 4.194444444444445
+  },
+  "positiveThemes": [
+    {
+      "word": "opal",
+      "count": 52
+    },
+    {
+      "word": "really",
+      "count": 45
+    },
+    {
+      "word": "screen",
+      "count": 40
+    },
+    {
+      "word": "phone",
+      "count": 36
+    },
+    {
+      "word": "great",
+      "count": 34
+    },
+    {
+      "word": "good",
+      "count": 33
+    },
+    {
+      "word": "apps",
+      "count": 31
+    },
+    {
+      "word": "love",
+      "count": 28
+    },
+    {
+      "word": "life",
+      "count": 27
+    },
+    {
+      "word": "much",
+      "count": 26
+    },
+    {
+      "word": "helped",
+      "count": 23
+    },
+    {
+      "word": "back",
+      "count": 23
+    },
+    {
+      "word": "free",
+      "count": 21
+    },
+    {
+      "word": "social",
+      "count": 21
+    },
+    {
+      "word": "works",
+      "count": 20
+    },
+    {
+      "word": "media",
+      "count": 20
+    },
+    {
+      "word": "need",
+      "count": 18
+    },
+    {
+      "word": "best",
+      "count": 17
+    },
+    {
+      "word": "helps",
+      "count": 17
+    },
+    {
+      "word": "actually",
+      "count": 17
+    },
+    {
+      "word": "scrolling",
+      "count": 15
+    },
+    {
+      "word": "amazing",
+      "count": 15
+    },
+    {
+      "word": "work",
+      "count": 14
+    },
+    {
+      "word": "want",
+      "count": 14
+    },
+    {
+      "word": "helpful",
+      "count": 14
+    },
+    {
+      "word": "set",
+      "count": 14
+    },
+    {
+      "word": "focus",
+      "count": 13
+    },
+    {
+      "word": "many",
+      "count": 13
+    },
+    {
+      "word": "blocked",
+      "count": 13
+    },
+    {
+      "word": "version",
+      "count": 13
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "apps",
+      "count": 23
+    },
+    {
+      "word": "block",
+      "count": 18
+    },
+    {
+      "word": "phone",
+      "count": 11
+    },
+    {
+      "word": "work",
+      "count": 9
+    },
+    {
+      "word": "delete",
+      "count": 9
+    },
+    {
+      "word": "opal",
+      "count": 9
+    },
+    {
+      "word": "crashes",
+      "count": 9
+    },
+    {
+      "word": "still",
+      "count": 8
+    },
+    {
+      "word": "need",
+      "count": 8
+    },
+    {
+      "word": "want",
+      "count": 8
+    },
+    {
+      "word": "working",
+      "count": 7
+    },
+    {
+      "word": "screen",
+      "count": 7
+    },
+    {
+      "word": "buggy",
+      "count": 7
+    },
+    {
+      "word": "way",
+      "count": 6
+    },
+    {
+      "word": "glitchy",
+      "count": 6
+    },
+    {
+      "word": "anymore",
+      "count": 6
+    },
+    {
+      "word": "try",
+      "count": 6
+    },
+    {
+      "word": "take",
+      "count": 6
+    },
+    {
+      "word": "blocking",
+      "count": 6
+    },
+    {
+      "word": "lock",
+      "count": 6
+    },
+    {
+      "word": "store",
+      "count": 6
+    },
+    {
+      "word": "iphone",
+      "count": 6
+    },
+    {
+      "word": "already",
+      "count": 6
+    },
+    {
+      "word": "fix",
+      "count": 6
+    },
+    {
+      "word": "long",
+      "count": 5
+    },
+    {
+      "word": "love",
+      "count": 5
+    },
+    {
+      "word": "select",
+      "count": 5
+    },
+    {
+      "word": "scam",
+      "count": 5
+    },
+    {
+      "word": "features",
+      "count": 5
+    },
+    {
+      "word": "money",
+      "count": 5
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "block",
+      "painPoint": "Users complain about \"block\" but it's not mentioned positively",
+      "count": 18,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "delete",
+      "painPoint": "Users complain about \"delete\" but it's not mentioned positively",
+      "count": 9,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "crashes",
+      "painPoint": "Users complain about \"crashes\" but it's not mentioned positively",
+      "count": 9,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "still",
+      "painPoint": "Users complain about \"still\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "working",
+      "painPoint": "Users complain about \"working\" but it's not mentioned positively",
+      "count": 7,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "buggy",
+      "painPoint": "Users complain about \"buggy\" but it's not mentioned positively",
+      "count": 7,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "way",
+      "painPoint": "Users complain about \"way\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "glitchy",
+      "painPoint": "Users complain about \"glitchy\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "anymore",
+      "painPoint": "Users complain about \"anymore\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "try",
+      "painPoint": "Users complain about \"try\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"App functionality issues such as crashing and bugs\",\n    \"Difficulty in selecting apps to block\",\n    \"Problems with pausing blocks or taking breaks\",\n    \"Limited options in the free version\",\n    \"Inability to close pop-ups promoting the paid version\"\n  ],\n  \"lovedFeatures\": [\n    \"Rewards system with virtual gems\",\n    \"Encouraging messages and prompts to stay focused\",\n    \"Effectiveness in reducing screen time and distractions\",\n    \"Ease of use in blocking apps\",\n    \"Engaging interface with rocks and inspirational quotes\"\n  ],\n  \"marketGaps\": [\n    \"Need for a more stable and bug-free app experience\",\n    \"Desire for improved app selection process for blocking\",\n    \"Opportunity for enhanced features in the free version to retain users\",\n    \"Demand for better handling of pop-ups and promotions\"\n  ],\n  \"exploitableFeatures\": [\n    \"Enhanced stability and bug fixes to improve overall functionality\",\n    \"Improved app selection process for blocking apps\",\n    \"Expansion of features in the free version to provide more value to users\",\n    \"Better management of pop-ups and promotions to enhance user experience\"\n  ],\n  \"recommendations\": [\n    \"Implement rigorous testing and bug fixing to ensure app stability\",\n    \"Enhance app selection interface for blocking apps to be more user-friendly\",\n    \"Add more valuable features to the free version to increase user satisfaction and retention\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"The high number of positive reviews and user engagement indicate a strong demand for an app like this. By addressing the identified pain points and enhancing the existing features, there is a significant opportunity to capture a larger market share in the mobile app space focused on reducing screen time and distractions.\"\n}\n```"
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-07T11:02:24.213Z"
+}

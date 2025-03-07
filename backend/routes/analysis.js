@@ -244,10 +244,10 @@ router.post('/mvp-opportunity', async (req, res) => {
   try {
     const { appIds, category } = req.body;
     
-    if (!appIds || !Array.isArray(appIds) || appIds.length < 2) {
+    if (!appIds || !Array.isArray(appIds) || appIds.length < 1) {
       return res.status(400).json({ 
         error: true, 
-        message: 'Please provide at least two similar app IDs to analyze' 
+        message: 'Please provide at least one app ID to analyze' 
       });
     }
     
