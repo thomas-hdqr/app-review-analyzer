@@ -1,0 +1,241 @@
+{
+  "sentimentAnalysis": {
+    "positive": 36,
+    "negative": 34,
+    "neutral": 10,
+    "total": 80,
+    "averageScore": 3.175,
+    "sentimentRatio": 1.0588235294117647
+  },
+  "positiveThemes": [
+    {
+      "word": "calorie",
+      "count": 12
+    },
+    {
+      "word": "tracking",
+      "count": 12
+    },
+    {
+      "word": "food",
+      "count": 10
+    },
+    {
+      "word": "great",
+      "count": 8
+    },
+    {
+      "word": "love",
+      "count": 8
+    },
+    {
+      "word": "good",
+      "count": 6
+    },
+    {
+      "word": "first",
+      "count": 6
+    },
+    {
+      "word": "recommend",
+      "count": 6
+    },
+    {
+      "word": "way",
+      "count": 6
+    },
+    {
+      "word": "calories",
+      "count": 6
+    },
+    {
+      "word": "fitness",
+      "count": 6
+    },
+    {
+      "word": "surprised",
+      "count": 6
+    },
+    {
+      "word": "super",
+      "count": 6
+    },
+    {
+      "word": "easy",
+      "count": 4
+    },
+    {
+      "word": "algo",
+      "count": 4
+    },
+    {
+      "word": "bien",
+      "count": 4
+    },
+    {
+      "word": "happy",
+      "count": 4
+    },
+    {
+      "word": "macros",
+      "count": 4
+    },
+    {
+      "word": "plus",
+      "count": 4
+    },
+    {
+      "word": "back",
+      "count": 4
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "calories",
+      "count": 22
+    },
+    {
+      "word": "trial",
+      "count": 18
+    },
+    {
+      "word": "pay",
+      "count": 16
+    },
+    {
+      "word": "good",
+      "count": 14
+    },
+    {
+      "word": "free",
+      "count": 12
+    },
+    {
+      "word": "macros",
+      "count": 12
+    },
+    {
+      "word": "plan",
+      "count": 10
+    },
+    {
+      "word": "first",
+      "count": 10
+    },
+    {
+      "word": "great",
+      "count": 10
+    },
+    {
+      "word": "subscription",
+      "count": 8
+    },
+    {
+      "word": "different",
+      "count": 8
+    },
+    {
+      "word": "option",
+      "count": 8
+    },
+    {
+      "word": "try",
+      "count": 8
+    },
+    {
+      "word": "idea",
+      "count": 8
+    },
+    {
+      "word": "reviews",
+      "count": 8
+    },
+    {
+      "word": "scam",
+      "count": 6
+    },
+    {
+      "word": "price",
+      "count": 6
+    },
+    {
+      "word": "really",
+      "count": 6
+    },
+    {
+      "word": "put",
+      "count": 6
+    },
+    {
+      "word": "bought",
+      "count": 6
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "trial",
+      "painPoint": "Users complain about \"trial\" but it's not mentioned positively",
+      "count": 18,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "pay",
+      "painPoint": "Users complain about \"pay\" but it's not mentioned positively",
+      "count": 16,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "free",
+      "painPoint": "Users complain about \"free\" but it's not mentioned positively",
+      "count": 12,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "plan",
+      "painPoint": "Users complain about \"plan\" but it's not mentioned positively",
+      "count": 10,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "subscription",
+      "painPoint": "Users complain about \"subscription\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "different",
+      "painPoint": "Users complain about \"different\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "option",
+      "painPoint": "Users complain about \"option\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "try",
+      "painPoint": "Users complain about \"try\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "idea",
+      "painPoint": "Users complain about \"idea\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "reviews",
+      "painPoint": "Users complain about \"reviews\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Lack of free trial leading to uncertainty about app functionality before paying for subscription\",\n    \"Inaccurate calorie and macro tracking for certain foods\",\n    \"Issues with billing discrepancies and overcharging\",\n    \"Limited functionalities like no connection to Apple Health, difficulty in correcting values, and buggy adjustments\",\n    \"Lack of diverse measurement input options and historical data limitations\",\n    \"Lack of responsiveness to user feedback and customer service issues\"\n  ],\n  \"lovedFeatures\": [\n    \"User-friendly interface\",\n    \"AI suggestions for meals and portion sizes\",\n    \"Vast food database for easy food logging\"\n  ],\n  \"marketGaps\": [\n    \"Absence of a free version or trial option to showcase app benefits\",\n    \"Need for improved accuracy in calorie and macro tracking for all types of foods\",\n    \"Opportunity to enhance user engagement with more insightful data and progress tracking features\"\n  ],\n  \"recommendations\": [\n    \"Introduce a free trial period or a limited version of the app to allow users to experience key features before committing to a subscription\",\n    \"Enhance accuracy in calorie and macro tracking for all types of foods to build user trust and reliability\",\n    \"Implement user-requested features like diverse measurement input options, historical data access, progress tracking dashboards, and integration with Apple Health\"\n  ]\n}\n```"
+  },
+  "reviewCount": 80,
+  "lastUpdated": "2025-03-06T18:54:26.473Z"
+}
