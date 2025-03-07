@@ -1,0 +1,321 @@
+{
+  "sentimentAnalysis": {
+    "positive": 172,
+    "negative": 16,
+    "neutral": 12,
+    "total": 200,
+    "averageScore": 4.33,
+    "sentimentRatio": 10.75
+  },
+  "positiveThemes": [
+    {
+      "word": "love",
+      "count": 87
+    },
+    {
+      "word": "tomatoes",
+      "count": 69
+    },
+    {
+      "word": "focus",
+      "count": 55
+    },
+    {
+      "word": "feature",
+      "count": 41
+    },
+    {
+      "word": "different",
+      "count": 35
+    },
+    {
+      "word": "wish",
+      "count": 32
+    },
+    {
+      "word": "great",
+      "count": 30
+    },
+    {
+      "word": "see",
+      "count": 30
+    },
+    {
+      "word": "timer",
+      "count": 29
+    },
+    {
+      "word": "cute",
+      "count": 22
+    },
+    {
+      "word": "simple",
+      "count": 20
+    },
+    {
+      "word": "break",
+      "count": 20
+    },
+    {
+      "word": "color",
+      "count": 20
+    },
+    {
+      "word": "work",
+      "count": 20
+    },
+    {
+      "word": "add",
+      "count": 20
+    },
+    {
+      "word": "pomodoro",
+      "count": 20
+    },
+    {
+      "word": "new",
+      "count": 19
+    },
+    {
+      "word": "tag",
+      "count": 19
+    },
+    {
+      "word": "option",
+      "count": 18
+    },
+    {
+      "word": "really",
+      "count": 18
+    },
+    {
+      "word": "tomato",
+      "count": 18
+    },
+    {
+      "word": "version",
+      "count": 18
+    },
+    {
+      "word": "mode",
+      "count": 17
+    },
+    {
+      "word": "apps",
+      "count": 17
+    },
+    {
+      "word": "study",
+      "count": 16
+    },
+    {
+      "word": "want",
+      "count": 16
+    },
+    {
+      "word": "able",
+      "count": 16
+    },
+    {
+      "word": "change",
+      "count": 16
+    },
+    {
+      "word": "screen",
+      "count": 16
+    },
+    {
+      "word": "watch",
+      "count": 16
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "whitelist",
+      "count": 8
+    },
+    {
+      "word": "apps",
+      "count": 7
+    },
+    {
+      "word": "clicks",
+      "count": 6
+    },
+    {
+      "word": "first",
+      "count": 6
+    },
+    {
+      "word": "doesn",
+      "count": 6
+    },
+    {
+      "word": "user",
+      "count": 5
+    },
+    {
+      "word": "work",
+      "count": 5
+    },
+    {
+      "word": "phone",
+      "count": 5
+    },
+    {
+      "word": "mode",
+      "count": 5
+    },
+    {
+      "word": "feature",
+      "count": 5
+    },
+    {
+      "word": "want",
+      "count": 5
+    },
+    {
+      "word": "free",
+      "count": 5
+    },
+    {
+      "word": "away",
+      "count": 4
+    },
+    {
+      "word": "screens",
+      "count": 4
+    },
+    {
+      "word": "macos",
+      "count": 4
+    },
+    {
+      "word": "pomodoro",
+      "count": 4
+    },
+    {
+      "word": "timing",
+      "count": 4
+    },
+    {
+      "word": "scheduled",
+      "count": 4
+    },
+    {
+      "word": "version",
+      "count": 4
+    },
+    {
+      "word": "screen",
+      "count": 3
+    },
+    {
+      "word": "blocking",
+      "count": 3
+    },
+    {
+      "word": "sessions",
+      "count": 3
+    },
+    {
+      "word": "wish",
+      "count": 3
+    },
+    {
+      "word": "dark",
+      "count": 3
+    },
+    {
+      "word": "much",
+      "count": 3
+    },
+    {
+      "word": "never",
+      "count": 3
+    },
+    {
+      "word": "option",
+      "count": 3
+    },
+    {
+      "word": "timer",
+      "count": 3
+    },
+    {
+      "word": "sign",
+      "count": 2
+    },
+    {
+      "word": "walk",
+      "count": 2
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "whitelist",
+      "painPoint": "Users complain about \"whitelist\" but it's not mentioned positively",
+      "count": 8,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "clicks",
+      "painPoint": "Users complain about \"clicks\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "first",
+      "painPoint": "Users complain about \"first\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "doesn",
+      "painPoint": "Users complain about \"doesn\" but it's not mentioned positively",
+      "count": 6,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "user",
+      "painPoint": "Users complain about \"user\" but it's not mentioned positively",
+      "count": 5,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "phone",
+      "painPoint": "Users complain about \"phone\" but it's not mentioned positively",
+      "count": 5,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "free",
+      "painPoint": "Users complain about \"free\" but it's not mentioned positively",
+      "count": 5,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "away",
+      "painPoint": "Users complain about \"away\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "screens",
+      "painPoint": "Users complain about \"screens\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "macos",
+      "painPoint": "Users complain about \"macos\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Phantom notifications on Apple Watch\",\n    \"Lack of customizability in terms of app whitelist for different focus sessions\",\n    \"Inability to pause and lack of dark mode for OLED battery optimization\",\n    \"Issues with notification sounds and tracking time accurately\"\n  ],\n  \"lovedFeatures\": [\n    \"Tomato tracking system\",\n    \"Blocking distracting apps\",\n    \"Focus timer functionality\",\n    \"Weekly or monthly tomato display\",\n    \"Shareplay feature idea\"\n  ],\n  \"marketGaps\": [\n    \"Customizable whitelist for different focus sessions\",\n    \"Improved Apple Watch integration and notification handling\",\n    \"Enhanced tracking and reporting features\",\n    \"Dark mode for OLED battery optimization\"\n  ],\n  \"exploitableFeatures\": [\n    \"Customizable whitelist for different focus sessions\",\n    \"Improved Apple Watch integration and notification handling\",\n    \"Enhanced tracking and reporting features\"\n  ],\n  \"recommendations\": [\n    \"Implement customizable whitelist for different focus sessions\",\n    \"Enhance Apple Watch integration and notification handling\",\n    \"Introduce advanced tracking and reporting features\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"The positive sentiment expressed by users, coupled with identified market gaps and strong interest in the core features, suggests a high potential for success. Addressing pain points and expanding on loved features can position a new app for significant market growth.\"\n}\n```  "
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-07T10:49:53.354Z"
+}

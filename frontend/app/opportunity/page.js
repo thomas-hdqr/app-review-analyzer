@@ -253,14 +253,39 @@ export default function OpportunityPage() {
   }, [selectedApps, router]);
   
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
-        MVP Opportunity Analyzer
-      </h1>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section with a modern gradient background */}
+      <div className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-700 text-white">
+        <div className="container mx-auto px-6 py-16">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+              Discover Your Next Big <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-amber-400">Opportunity</span>
+            </h1>
+            
+            <p className="text-xl opacity-90 mb-10 leading-relaxed">
+              Analyze the market with AI to find gaps worth exploiting for your MVP.
+              Get actionable insights and opportunity scores to guide your product decisions.
+            </p>
+            
+            <div className="inline-block animate-bounce bg-white bg-opacity-20 p-2 rounded-full">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <p className="text-gray-600 mb-8">
-        Find market opportunities by analyzing similar apps. Select 4-5 apps in the same category to identify common pain points and market gaps to exploit in your MVP.
-      </p>
+      <div className="container mx-auto px-6 py-12">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+            Market Opportunity Analyzer
+          </h2>
+          
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            Select apps to analyze their reviews and identify market gaps. Our AI will find patterns across apps, score opportunities, and suggest features for your MVP.
+          </p>
+        </div>
       
       {/* Search Form */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
