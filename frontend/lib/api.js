@@ -214,20 +214,72 @@ export async function identifyMarketGaps(appIds) {
  * @returns {Promise<Object>} - MVP opportunity analysis
  */
 export async function analyzeMVPOpportunity(appIds, category) {
-  const response = await fetch(`${API_BASE_URL}/analysis/mvp-opportunity`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ 
-      appIds,
-      category
-    })
-  });
-  
-  if (!response.ok) {
-    throw new Error('Error analyzing MVP opportunity');
+  try {
+    const response = await fetch(`${API_BASE_URL}/analysis/mvp-opportunity`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        appIds,
+        category
+      })
+    });
+    
+    if (!response.ok) {
+      // Try to get error message from response
+      try {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Error analyzing MVP opportunity');
+      } catch (e) {
+        throw new Error('Error analyzing MVP opportunity');
+      }
+    }
+    
+    const data = await response.json();
+    
+    // If the backend didn't return valid opportunity data, provide fallback
+    if (!data.data || !data.success) {
+      return {
+        success: true,
+        data: {
+          marketGaps: [],
+          mvpOpportunityScore: { score: 0, reasoning: "Analysis could not be completed due to insufficient data" },
+          mvpRecommendedFeatures: { core: [], differentiators: [], potential: [] },
+          aiInsights: null,
+          appsAnalyzed: appIds,
+          analysisDate: new Date().toISOString(),
+          category: category || 'Unknown',
+          dataQuality: {
+            appsWithReviews: 0,
+            totalApps: appIds.length,
+            error: true
+          }
+        }
+      };
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('Error in analyzeMVPOpportunity:', error);
+    
+    // Return fallback data instead of throwing error
+    return {
+      success: true,
+      data: {
+        marketGaps: [],
+        mvpOpportunityScore: { score: 0, reasoning: "Analysis could not be completed. Please try with different apps that have more reviews." },
+        mvpRecommendedFeatures: { core: [], differentiators: [], potential: [] },
+        aiInsights: null,
+        appsAnalyzed: appIds,
+        analysisDate: new Date().toISOString(),
+        category: category || 'Unknown',
+        dataQuality: {
+          appsWithReviews: 0,
+          totalApps: appIds.length,
+          error: true
+        }
+      }
+    };
   }
-  
-  return response.json();
 }

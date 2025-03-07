@@ -1185,6 +1185,9 @@ video {
 .pl-5 {
   padding-left: 1.25rem;
 }
+.pl-7 {
+  padding-left: 1.75rem;
+}
 .text-center {
   text-align: center;
 }
@@ -1343,6 +1346,10 @@ video {
 .text-yellow-500 {
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity, 1));
+}
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
 .text-opacity-50 {
   --tw-text-opacity: 0.5;

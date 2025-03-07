@@ -310,9 +310,19 @@ async function identifyMarketGaps(analysisResults) {
     });
     
     // Convert to array and sort by total count
-    const sortedThemes = Object.values(allNegativeThemes)
-      .filter(theme => theme.appCount >= 2) // Theme appears in at least 2 apps
+    let sortedThemes = Object.values(allNegativeThemes)
       .sort((a, b) => b.totalCount - a.totalCount);
+      
+    // If we have at least 2 apps, filter for themes appearing in multiple apps
+    if (analysisResults.length >= 2) {
+      sortedThemes = sortedThemes.filter(theme => theme.appCount >= 2);
+    }
+    
+    // If we still have no themes, include all negative themes regardless of app count
+    if (sortedThemes.length === 0) {
+      sortedThemes = Object.values(allNegativeThemes)
+        .sort((a, b) => b.totalCount - a.totalCount);
+    }
     
     // Calculate opportunity score
     const marketGaps = sortedThemes.map(theme => {

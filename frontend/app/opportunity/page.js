@@ -145,54 +145,92 @@ export default function OpportunityPage() {
     setOpportunityData(null); // Clear any previous results
     
     try {
-      // Fetch reviews for each app (one by one to avoid rate limiting)
-      let reviewsFound = false;
+      // Create a collection of available reviews
+      const reviewsCollection = {};
+      let anyReviewsFound = false;
       
+      // First pass: fetch reviews for each app and store info
       for (const id of ids) {
         try {
           const reviewsResponse = await api.getReviews(id);
-          if (reviewsResponse.success && reviewsResponse.data?.length > 0) {
-            reviewsFound = true;
+          
+          // Store the review count
+          reviewsCollection[id] = {
+            count: reviewsResponse.success ? reviewsResponse.data?.length || 0 : 0,
+            hasReviews: reviewsResponse.success && reviewsResponse.data && reviewsResponse.data.length > 0
+          };
+          
+          if (reviewsCollection[id].hasReviews) {
+            anyReviewsFound = true;
           }
         } catch (e) {
           console.error(`Error fetching reviews for app ${id}:`, e);
-          // Continue with other apps even if one fails
+          reviewsCollection[id] = { count: 0, hasReviews: false };
         }
-      }
-      
-      // Show a warning if no reviews were found, but continue the process
-      if (!reviewsFound) {
-        console.warn("No reviews found for any of the selected apps");
       }
       
       // Analyze reviews for each app (one by one)
       for (const id of ids) {
         try {
-          await api.analyzeReviews(id);
+          if (reviewsCollection[id].hasReviews) {
+            await api.analyzeReviews(id);
+          } else {
+            console.warn(`Skipping analysis for app ${id} - no reviews found`);
+          }
         } catch (e) {
           console.error(`Error analyzing reviews for app ${id}:`, e);
-          // Continue with other apps even if one fails
         }
       }
+      
+      // Generate a detailed status message
+      const appsWithReviews = ids.filter(id => reviewsCollection[id].hasReviews).length;
       
       // Now perform the opportunity analysis
       const category = selectedApps[0]?.primaryGenreId;
       const response = await api.analyzeMVPOpportunity(ids, category);
       
-      if (response.success) {
+      // Force the data quality to reflect our actual findings
+      if (response.data) {
+        // Inject the actual review data we found
+        response.data.dataQuality = {
+          appsWithReviews,
+          totalApps: ids.length,
+          reviewCollection: reviewsCollection,
+          error: !anyReviewsFound
+        };
+        
+        // Save the modified response
         setOpportunityData(response.data);
         
-        // Show a specific warning if data quality is low
-        if (
-          response.data.dataQuality && 
-          response.data.dataQuality.appsWithReviews === 0
-        ) {
+        // Show messages based on our findings, not the server's
+        if (!anyReviewsFound) {
+          console.warn("Analysis completed but no reviews found for any app");
           setError(
-            'Analysis completed, but no app reviews were found. The results may not be accurate. Try selecting apps with more reviews.'
+            'No reviews were found for any of your selected apps. Try searching for more popular apps.'
+          );
+        } else if (appsWithReviews < ids.length) {
+          // Some apps have reviews but not all
+          setError(
+            `Only ${appsWithReviews} of ${ids.length} selected apps have reviews. Results may be limited.`
           );
         }
       } else {
-        setError('Error analyzing opportunities. Please try with different apps.');
+        // Fallback data if response is incomplete
+        setOpportunityData({
+          marketGaps: [],
+          mvpOpportunityScore: { score: 0, reasoning: "Analysis could not be completed" },
+          mvpRecommendedFeatures: { core: [], differentiators: [], potential: [] },
+          aiInsights: null,
+          appsAnalyzed: ids,
+          analysisDate: new Date().toISOString(),
+          category: category || 'Unknown',
+          dataQuality: {
+            appsWithReviews,
+            totalApps: ids.length,
+            reviewCollection: reviewsCollection,
+            error: !anyReviewsFound
+          }
+        });
       }
     } catch (error) {
       console.error('Error analyzing opportunities:', error);

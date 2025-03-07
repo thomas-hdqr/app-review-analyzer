@@ -73,17 +73,55 @@ export default function MVPOpportunityCard({ opportunityData }) {
         </div>
         
         {/* Data quality warning */}
-        {dataQuality && dataQuality.appsWithReviews < dataQuality.totalApps && (
-          <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded-md text-sm text-yellow-800">
-            <div className="flex items-center">
-              <svg className="w-4 h-4 mr-1 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-              </svg>
-              <span>
-                Limited data: Only {dataQuality.appsWithReviews} of {dataQuality.totalApps} apps have reviews. Results may be incomplete.
-              </span>
+        {dataQuality && (
+          dataQuality.error ? (
+            <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-md text-sm text-red-800">
+              <div className="flex items-center">
+                <svg className="w-5 h-5 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+                <span className="font-medium">
+                  Analysis error: Insufficient review data for meaningful analysis
+                </span>
+              </div>
+              
+              <div className="mt-2 pl-7">
+                {dataQuality.reviewCollection ? (
+                  <div>
+                    <p className="mb-2">Review status for selected apps:</p>
+                    <ul className="list-disc pl-5 space-y-1 mb-3">
+                      {Object.entries(dataQuality.reviewCollection).map(([appId, info]) => (
+                        <li key={appId}>
+                          App ID {appId.slice(-4)}: {info.hasReviews ? 
+                            `${info.count} reviews found` : 
+                            'No reviews found'}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+                
+                <p className="font-medium mb-2">Suggestions to improve analysis:</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Search for more popular apps (they tend to have more reviews)</li>
+                  <li>Try apps from different developers</li>
+                  <li>Select 3-5 apps for better comparison results</li>
+                </ul>
+              </div>
             </div>
-          </div>
+          ) : 
+          dataQuality.appsWithReviews < dataQuality.totalApps && (
+            <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded-md text-sm text-yellow-800">
+              <div className="flex items-center">
+                <svg className="w-4 h-4 mr-1 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                <span>
+                  Limited data: Only {dataQuality.appsWithReviews} of {dataQuality.totalApps} apps have reviews. Results may be incomplete.
+                </span>
+              </div>
+            </div>
+          )
         )}
       </div>
       

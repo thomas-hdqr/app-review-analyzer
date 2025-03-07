@@ -1,0 +1,241 @@
+{
+  "sentimentAnalysis": {
+    "positive": 128,
+    "negative": 54,
+    "neutral": 18,
+    "total": 200,
+    "averageScore": 3.78,
+    "sentimentRatio": 2.3703703703703702
+  },
+  "positiveThemes": [
+    {
+      "word": "love",
+      "count": 48
+    },
+    {
+      "word": "habits",
+      "count": 47
+    },
+    {
+      "word": "good",
+      "count": 35
+    },
+    {
+      "word": "habit",
+      "count": 34
+    },
+    {
+      "word": "great",
+      "count": 27
+    },
+    {
+      "word": "goals",
+      "count": 25
+    },
+    {
+      "word": "track",
+      "count": 25
+    },
+    {
+      "word": "every",
+      "count": 25
+    },
+    {
+      "word": "tracker",
+      "count": 23
+    },
+    {
+      "word": "please",
+      "count": 22
+    },
+    {
+      "word": "easy",
+      "count": 22
+    },
+    {
+      "word": "daily",
+      "count": 20
+    },
+    {
+      "word": "much",
+      "count": 19
+    },
+    {
+      "word": "want",
+      "count": 19
+    },
+    {
+      "word": "thank",
+      "count": 19
+    },
+    {
+      "word": "helped",
+      "count": 18
+    },
+    {
+      "word": "really",
+      "count": 17
+    },
+    {
+      "word": "life",
+      "count": 17
+    },
+    {
+      "word": "simple",
+      "count": 15
+    },
+    {
+      "word": "way",
+      "count": 15
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "habit",
+      "count": 21
+    },
+    {
+      "word": "habits",
+      "count": 19
+    },
+    {
+      "word": "apple",
+      "count": 17
+    },
+    {
+      "word": "pay",
+      "count": 16
+    },
+    {
+      "word": "family",
+      "count": 16
+    },
+    {
+      "word": "data",
+      "count": 15
+    },
+    {
+      "word": "lifetime",
+      "count": 14
+    },
+    {
+      "word": "membership",
+      "count": 13
+    },
+    {
+      "word": "add",
+      "count": 13
+    },
+    {
+      "word": "premium",
+      "count": 12
+    },
+    {
+      "word": "review",
+      "count": 12
+    },
+    {
+      "word": "back",
+      "count": 11
+    },
+    {
+      "word": "work",
+      "count": 10
+    },
+    {
+      "word": "paid",
+      "count": 10
+    },
+    {
+      "word": "watch",
+      "count": 10
+    },
+    {
+      "word": "version",
+      "count": 10
+    },
+    {
+      "word": "thing",
+      "count": 9
+    },
+    {
+      "word": "developer",
+      "count": 9
+    },
+    {
+      "word": "refund",
+      "count": 9
+    },
+    {
+      "word": "cannot",
+      "count": 9
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "apple",
+      "painPoint": "Users complain about \"apple\" but it's not mentioned positively",
+      "count": 17,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "pay",
+      "painPoint": "Users complain about \"pay\" but it's not mentioned positively",
+      "count": 16,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "family",
+      "painPoint": "Users complain about \"family\" but it's not mentioned positively",
+      "count": 16,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "data",
+      "painPoint": "Users complain about \"data\" but it's not mentioned positively",
+      "count": 15,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "lifetime",
+      "painPoint": "Users complain about \"lifetime\" but it's not mentioned positively",
+      "count": 14,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "membership",
+      "painPoint": "Users complain about \"membership\" but it's not mentioned positively",
+      "count": 13,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "add",
+      "painPoint": "Users complain about \"add\" but it's not mentioned positively",
+      "count": 13,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "premium",
+      "painPoint": "Users complain about \"premium\" but it's not mentioned positively",
+      "count": 12,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "review",
+      "painPoint": "Users complain about \"review\" but it's not mentioned positively",
+      "count": 12,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "back",
+      "painPoint": "Users complain about \"back\" but it's not mentioned positively",
+      "count": 11,
+      "opportunityScore": 10
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Limited functionality in the free version, with key features locked behind a paywall\",\n    \"Issues with data reliability and data loss in mood tracking\",\n    \"Confusing subscription and payment model leading to unexpected charges\",\n    \"Inefficient user interface for certain actions like adding specific quantities to habits\",\n    \"Unwanted pop-ups and repeated requests for reviews/feedback\"\n  ],\n  \"lovedFeatures\": [\n    \"Habit tracking and goal setting functionalities\",\n    \"User-friendly widgets for Home Screen customization\",\n    \"Mood tracking feature\",\n    \"Flexibility and customization options for tracking various aspects of life\",\n    \"Responsive customer support and quick issue resolution\"\n  ],\n  \"marketGaps\": [\n    \"Lack of multi-language support beyond English\",\n    \"Absence of specific habit categories or customizable options for habit visuals\",\n    \"No family sharing feature for users on separate Apple plans\"\n  ],\n  \"exploitableFeatures\": [\n    \"Implement multi-language support to cater to a wider user base\",\n    \"Enhance habit customization with a wider range of visuals and categories\",\n    \"Introduce a family sharing feature to promote app usage among households\"\n  ],\n  \"recommendations\": [\n    \"Improve transparency in the subscription model to prevent unexpected charges and enhance user trust\",\n    \"Optimize the user interface for more efficient interactions, such as adding quantities to habits\",\n    \"Reduce intrusive pop-ups and review requests to enhance overall user experience\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"The app has a strong user base with a clear demand for habit tracking and goal setting features. By addressing pain points and market gaps while leveraging loved features, a new app could capture a significant market share. Improving user experience and expanding features could further solidify its position in the market.\"\n}\n```"
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-07T10:45:57.674Z"
+}

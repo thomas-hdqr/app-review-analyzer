@@ -1,0 +1,217 @@
+{
+  "sentimentAnalysis": {
+    "positive": 191,
+    "negative": 6,
+    "neutral": 3,
+    "total": 200,
+    "averageScore": 4.79,
+    "sentimentRatio": 31.833333333333332
+  },
+  "positiveThemes": [
+    {
+      "word": "screen",
+      "count": 112
+    },
+    {
+      "word": "apps",
+      "count": 60
+    },
+    {
+      "word": "really",
+      "count": 46
+    },
+    {
+      "word": "love",
+      "count": 40
+    },
+    {
+      "word": "helped",
+      "count": 39
+    },
+    {
+      "word": "amazing",
+      "count": 36
+    },
+    {
+      "word": "great",
+      "count": 36
+    },
+    {
+      "word": "helpful",
+      "count": 35
+    },
+    {
+      "word": "phone",
+      "count": 32
+    },
+    {
+      "word": "much",
+      "count": 32
+    },
+    {
+      "word": "hours",
+      "count": 30
+    },
+    {
+      "word": "actually",
+      "count": 30
+    },
+    {
+      "word": "best",
+      "count": 29
+    },
+    {
+      "word": "recommend",
+      "count": 28
+    },
+    {
+      "word": "free",
+      "count": 28
+    },
+    {
+      "word": "open",
+      "count": 27
+    },
+    {
+      "word": "works",
+      "count": 24
+    },
+    {
+      "word": "social",
+      "count": 23
+    },
+    {
+      "word": "media",
+      "count": 23
+    },
+    {
+      "word": "good",
+      "count": 22
+    }
+  ],
+  "negativeThemes": [
+    {
+      "word": "safari",
+      "count": 10
+    },
+    {
+      "word": "unlock",
+      "count": 7
+    },
+    {
+      "word": "blocking",
+      "count": 5
+    },
+    {
+      "word": "screenzen",
+      "count": 5
+    },
+    {
+      "word": "screwed",
+      "count": 4
+    },
+    {
+      "word": "went",
+      "count": 4
+    },
+    {
+      "word": "feedback",
+      "count": 4
+    },
+    {
+      "word": "report",
+      "count": 4
+    },
+    {
+      "word": "bug",
+      "count": 4
+    },
+    {
+      "word": "submit",
+      "count": 4
+    },
+    {
+      "word": "many",
+      "count": 4
+    },
+    {
+      "word": "hit",
+      "count": 3
+    },
+    {
+      "word": "features",
+      "count": 3
+    },
+    {
+      "word": "work",
+      "count": 3
+    }
+  ],
+  "marketGaps": [
+    {
+      "feature": "safari",
+      "painPoint": "Users complain about \"safari\" but it's not mentioned positively",
+      "count": 10,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "unlock",
+      "painPoint": "Users complain about \"unlock\" but it's not mentioned positively",
+      "count": 7,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "blocking",
+      "painPoint": "Users complain about \"blocking\" but it's not mentioned positively",
+      "count": 5,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "screenzen",
+      "painPoint": "Users complain about \"screenzen\" but it's not mentioned positively",
+      "count": 5,
+      "opportunityScore": 10
+    },
+    {
+      "feature": "screwed",
+      "painPoint": "Users complain about \"screwed\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "went",
+      "painPoint": "Users complain about \"went\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "feedback",
+      "painPoint": "Users complain about \"feedback\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "report",
+      "painPoint": "Users complain about \"report\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "bug",
+      "painPoint": "Users complain about \"bug\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 8
+    },
+    {
+      "feature": "submit",
+      "painPoint": "Users complain about \"submit\" but it's not mentioned positively",
+      "count": 4,
+      "opportunityScore": 8
+    }
+  ],
+  "aiInsights": {
+    "rawInsights": "```json\n{\n  \"painPoints\": [\n    \"Issues with app functionality and bugs\",\n    \"Difficulty in differentiating between apps for limiting screen time\",\n    \"Notification problems for limited apps\",\n    \"Limited customization for specific app settings\"\n  ],\n  \"lovedFeatures\": [\n    \"Ability to set limits on app usage\",\n    \"Streak feature for motivation\",\n    \"User-friendly interface\",\n    \"Customizable options for screen time management\",\n    \"Gamified elements like number of unlocks per day\"\n  ],\n  \"marketGaps\": [\n    \"Need for better app functionality and bug fixes\",\n    \"Enhanced customization options for different apps\",\n    \"Improved notification system for limited apps\",\n    \"Addressing specific pain points of users related to screen time management\"\n  ],\n  \"exploitableFeatures\": [\n    \"Enhanced app functionality and bug fixes\",\n    \"Advanced customization options for app settings\",\n    \"Improved notification system for limited apps\",\n    \"Innovative features to address specific pain points of users\"\n  ],\n  \"recommendations\": [\n    \"Implement thorough testing to resolve existing bugs and improve app functionality\",\n    \"Enhance customization options for users to set specific limits for different apps\",\n    \"Revamp notification system to ensure users receive relevant updates for limited apps\"\n  ],\n  \"opportunityScore\": 8,\n  \"scoreJustification\": \"There is a clear demand for a well-functioning, customizable app that helps users manage screen time effectively. By addressing the identified pain points and enhancing the existing features, a new app in this space has the potential to attract a significant user base.\"\n}\n```"
+  },
+  "reviewCount": 200,
+  "lastUpdated": "2025-03-07T10:43:23.858Z"
+}
