@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import ApiStatus from '../components/ApiStatus';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -76,6 +77,10 @@ export default function RootLayout({ children }) {
                       Market Gaps
                     </Link>
                   </nav>
+                </div>
+                
+                <div className="flex items-center">
+                  <ApiStatus />
                 </div>
               </div>
             </div>

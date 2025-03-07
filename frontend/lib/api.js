@@ -283,3 +283,28 @@ export async function analyzeMVPOpportunity(appIds, category) {
     };
   }
 }
+
+/**
+ * Check the health of the API server
+ * @returns {Promise<Object>} - Health check result
+ */
+export async function checkApiHealth() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/health`);
+    
+    if (!response.ok) {
+      throw new Error('API server is not responding properly');
+    }
+    
+    return {
+      success: true,
+      data: await response.json()
+    };
+  } catch (error) {
+    console.error('API health check failed:', error);
+    return {
+      success: false,
+      error: error.message || 'Could not connect to API server'
+    };
+  }
+}

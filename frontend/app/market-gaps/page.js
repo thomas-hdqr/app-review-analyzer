@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getCachedAnalysis, getAppDetails, identifyMarketGaps } from '../../lib/api';
+import { getCachedAnalysis, getAppDetails, identifyMarketGaps, checkApiHealth } from '../../lib/api';
 
 export default function MarketGapsPage() {
   const [analyzedApps, setAnalyzedApps] = useState([]);
@@ -17,12 +17,28 @@ export default function MarketGapsPage() {
     apps: null,
     analysis: null
   });
+  const [apiStatus, setApiStatus] = useState({ checked: false, healthy: true });
 
   // Fetch cached analysis reports on component mount
   useEffect(() => {
     async function fetchAnalyzedApps() {
       try {
         setLoading(prev => ({ ...prev, apps: true }));
+        
+        // First check API health
+        const healthCheck = await checkApiHealth();
+        setApiStatus({ checked: true, healthy: healthCheck.success });
+        
+        if (!healthCheck.success) {
+          setError(prev => ({ 
+            ...prev, 
+            apps: `API server connection error: ${healthCheck.error}. Please check your backend server.` 
+          }));
+          setAnalyzedApps([]);
+          setLoading(prev => ({ ...prev, apps: false }));
+          return;
+        }
+        
         const response = await getCachedAnalysis();
         setAnalyzedApps(response.data || []);
         
@@ -71,6 +87,15 @@ export default function MarketGapsPage() {
       return;
     }
 
+    // Check if API is healthy before analyzing
+    if (!apiStatus.healthy) {
+      setError(prev => ({ 
+        ...prev, 
+        analysis: 'Cannot analyze: API server is not available. Please check your backend server.' 
+      }));
+      return;
+    }
+
     setLoading(prev => ({ ...prev, analysis: true }));
     setError(prev => ({ ...prev, analysis: null }));
     
@@ -99,11 +124,24 @@ export default function MarketGapsPage() {
   return (
     <div className="space-y-6">
       <div className="bg-white shadow rounded-lg p-6">
-        <h1 className="text-2xl font-bold mb-4">Market Gap Analysis</h1>
-        <p className="text-gray-600">
-          Identify market opportunities by analyzing gaps across multiple apps in the same category.
-          Select apps you've already analyzed to find common pain points and unmet user needs.
-        </p>
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="text-2xl font-bold mb-4">Market Gap Analysis</h1>
+            <p className="text-gray-600">
+              Identify market opportunities by analyzing gaps across multiple apps in the same category.
+              Select apps you've already analyzed to find common pain points and unmet user needs.
+            </p>
+          </div>
+          
+          {apiStatus.checked && !apiStatus.healthy && (
+            <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              API Offline
+            </div>
+          )}
+        </div>
       </div>
 
       {/* App Selection */}

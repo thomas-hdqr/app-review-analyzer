@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import AppCard from '../../components/AppCard';
-import { searchApps, getCategories } from '../../lib/api';
+import { searchApps, getCategories, checkApiHealth } from '../../lib/api';
 
 export default function SearchPage() {
   const router = useRouter();
@@ -14,34 +14,60 @@ export default function SearchPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchPerformed, setSearchPerformed] = useState(false);
+  const [apiStatus, setApiStatus] = useState({ checked: false, healthy: true });
 
-  // Fetch categories on component mount
+  // Check API health and fetch categories on component mount
   useEffect(() => {
-    async function fetchCategories() {
+    async function initializeData() {
+      // First check API health
+      try {
+        const healthCheck = await checkApiHealth();
+        setApiStatus({ checked: true, healthy: healthCheck.success });
+        
+        if (!healthCheck.success) {
+          setError(`API server connection error: ${healthCheck.error}. Please check your backend server.`);
+          // Set fallback categories
+          setFallbackCategories();
+          return;
+        }
+      } catch (err) {
+        console.error('Error checking API health:', err);
+        setApiStatus({ checked: true, healthy: false });
+        setError('Could not connect to the API server. Please check your backend server.');
+        // Set fallback categories
+        setFallbackCategories();
+        return;
+      }
+      
+      // If API is healthy, fetch categories
       try {
         const response = await getCategories();
         setCategories(response.data || []);
       } catch (err) {
         console.error('Error fetching categories:', err);
         setError('Failed to load categories. Please try again later.');
-        
-        // Fallback categories in case the API call fails
-        setCategories([
-          { id: 6002, name: 'Weather' },
-          { id: 6007, name: 'Productivity' },
-          { id: 6008, name: 'Photo & Video' },
-          { id: 6017, name: 'Health & Fitness' },
-          { id: 6015, name: 'Finance' },
-          { id: 6005, name: 'Social Networking' },
-          { id: 6016, name: 'Travel' },
-          { id: 6023, name: 'Food & Drink' },
-          { id: 6013, name: 'Sports' },
-          { id: 6012, name: 'Lifestyle' }
-        ]);
+        // Set fallback categories
+        setFallbackCategories();
       }
     }
+    
+    function setFallbackCategories() {
+      // Fallback categories in case the API call fails
+      setCategories([
+        { id: 6002, name: 'Weather' },
+        { id: 6007, name: 'Productivity' },
+        { id: 6008, name: 'Photo & Video' },
+        { id: 6017, name: 'Health & Fitness' },
+        { id: 6015, name: 'Finance' },
+        { id: 6005, name: 'Social Networking' },
+        { id: 6016, name: 'Travel' },
+        { id: 6023, name: 'Food & Drink' },
+        { id: 6013, name: 'Sports' },
+        { id: 6012, name: 'Lifestyle' }
+      ]);
+    }
 
-    fetchCategories();
+    initializeData();
   }, []);
 
   // Handle search form submission
@@ -50,6 +76,12 @@ export default function SearchPage() {
     
     if (!searchTerm && !selectedCategory) {
       setError('Please enter a search term or select a category');
+      return;
+    }
+    
+    // Check if API is healthy before searching
+    if (!apiStatus.healthy) {
+      setError('Cannot search: API server is not available. Please check your backend server.');
       return;
     }
     
@@ -67,6 +99,7 @@ export default function SearchPage() {
     } catch (err) {
       console.error('Error searching apps:', err);
       setError('Failed to search apps. Please try again later.');
+      setApps([]);
     } finally {
       setLoading(false);
     }
@@ -80,7 +113,20 @@ export default function SearchPage() {
   return (
     <div className="space-y-6">
       <div className="bg-white shadow rounded-lg p-6">
-        <h1 className="text-2xl font-bold mb-6">Search iOS Apps</h1>
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="text-2xl font-bold mb-6">Search iOS Apps</h1>
+          </div>
+          
+          {apiStatus.checked && !apiStatus.healthy && (
+            <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              API Offline
+            </div>
+          )}
+        </div>
         
         <form onSubmit={handleSearch} className="space-y-4">
           <div className="grid md:grid-cols-2 gap-4">

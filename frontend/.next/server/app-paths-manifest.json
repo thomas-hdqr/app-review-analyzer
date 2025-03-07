@@ -1,5 +1,6 @@
 {
+  "/page": "app/page.js",
   "/market-gaps/page": "app/market-gaps/page.js",
   "/search/page": "app/search/page.js",
-  "/page": "app/page.js"
+  "/reports/page": "app/reports/page.js"
 }

@@ -43,7 +43,19 @@ app.use('/api/analysis', analysisRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: 'ok', message: 'Server is running' });
+  // Return detailed health information
+  res.status(200).json({ 
+    status: 'ok', 
+    message: 'Server is running',
+    version: '1.0.0',
+    timestamp: new Date().toISOString(),
+    endpoints: {
+      apps: '/api/apps',
+      reviews: '/api/reviews',
+      analysis: '/api/analysis'
+    },
+    environment: process.env.NODE_ENV || 'development'
+  });
 });
 
 // Error handling middleware
