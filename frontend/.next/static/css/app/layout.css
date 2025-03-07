@@ -755,6 +755,9 @@ video {
 .ml-5 {
   margin-left: 1.25rem;
 }
+.ml-6 {
+  margin-left: 1.5rem;
+}
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -1062,6 +1065,11 @@ video {
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1091,6 +1099,9 @@ video {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.overflow-x-auto {
+  overflow-x: auto;
 }
 .overflow-y-auto {
   overflow-y: auto;
@@ -1233,6 +1244,9 @@ video {
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
 }
+.border-\[\#ff9f0a\]\/30 {
+  border-color: rgb(255 159 10 / 0.3);
+}
 .border-r-transparent {
   border-right-color: transparent;
 }
@@ -1261,6 +1275,9 @@ video {
 .bg-\[\#30d158\] {
   --tw-bg-opacity: 1;
   background-color: rgb(48 209 88 / var(--tw-bg-opacity, 1));
+}
+.bg-\[\#30d158\]\/10 {
+  background-color: rgb(48 209 88 / 0.1);
 }
 .bg-\[\#30d158\]\/20 {
   background-color: rgb(48 209 88 / 0.2);
@@ -1373,6 +1390,9 @@ video {
 .bg-yellow-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 252 232 / var(--tw-bg-opacity, 1));
+}
+.bg-\[\#ff9f0a\]\/10 {
+  background-color: rgb(255 159 10 / 0.1);
 }
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
@@ -1587,6 +1607,9 @@ video {
 }
 .pt-4 {
   padding-top: 1rem;
+}
+.pt-6 {
+  padding-top: 1.5rem;
 }
 .text-left {
   text-align: left;
@@ -2063,6 +2086,10 @@ body {
   --tw-ring-offset-width: 2px;
 }
 
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
 .disabled\:bg-blue-400:disabled {
   --tw-bg-opacity: 1;
   background-color: rgb(96 165 250 / var(--tw-bg-opacity, 1));
@@ -2071,6 +2098,10 @@ body {
 .disabled\:bg-green-400:disabled {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity, 1));
+}
+
+.disabled\:bg-\[\#0a84ff\]\/50:disabled {
+  background-color: rgb(10 132 255 / 0.5);
 }
 
 .disabled\:opacity-50:disabled {

@@ -4,11 +4,12 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { getAppDetails, getSimilarApps, getReviews, analyzeReviews, getAnalysis } from '../../../lib/api';
+import { getAppDetails, getSimilarApps, getReviews, analyzeReviews, getAnalysis, convertBundleIdToAppId } from '../../../lib/api';
 import AppCard from '../../../components/AppCard';
 import ReviewList from '../../../components/ReviewList';
 import SentimentChart from '../../../components/SentimentChart';
 import ThemeCloud from '../../../components/ThemeCloud';
+import ApiDebugger from '../../../components/ApiDebugger';
 
 export default function AppDetailsPage() {
   const { id } = useParams();
@@ -35,12 +36,26 @@ export default function AppDetailsPage() {
       setError(prev => ({ ...prev, app: null }));
       
       try {
+        let appId = id;
+        
+        // Check if the ID is a bundle ID (contains dots)
+        if (id.includes('.')) {
+          try {
+            console.log(`Detected bundle ID: ${id}, attempting to convert to App Store ID`);
+            appId = await convertBundleIdToAppId(id);
+            console.log(`Successfully converted bundle ID ${id} to App Store ID ${appId}`);
+          } catch (conversionError) {
+            console.error('Error converting bundle ID:', conversionError);
+            // Continue with the original ID, the backend will try to handle it
+          }
+        }
+        
         // Get app details
-        const appResponse = await getAppDetails(id);
+        const appResponse = await getAppDetails(appId);
         setApp(appResponse.data);
         
         // Get similar apps
-        const similarResponse = await getSimilarApps(id);
+        const similarResponse = await getSimilarApps(appId);
         setSimilarApps(similarResponse.data || []);
       } catch (err) {
         console.error('Error fetching app details:', err);
@@ -60,11 +75,45 @@ export default function AppDetailsPage() {
     setError(prev => ({ ...prev, reviews: null }));
     
     try {
-      const response = await getReviews(id, force);
-      setReviews(response.data || []);
+      let appId = id;
+      
+      // Check if the ID is a bundle ID (contains dots)
+      if (id.includes('.')) {
+        try {
+          console.log(`Detected bundle ID: ${id}, attempting to convert to App Store ID`);
+          appId = await convertBundleIdToAppId(id);
+          console.log(`Successfully converted bundle ID ${id} to App Store ID ${appId}`);
+        } catch (conversionError) {
+          console.error('Error converting bundle ID:', conversionError);
+          // Continue with the original ID, the backend will try to handle it
+        }
+      }
+      
+      console.log(`Fetching reviews for app ${appId}, force=${force}`);
+      const reviewsResponse = await getReviews(appId, force);
+      
+      if (!reviewsResponse.data || !Array.isArray(reviewsResponse.data)) {
+        console.error('Invalid reviews response:', reviewsResponse);
+        throw new Error('Received invalid reviews data from server');
+      }
+      
+      console.log(`Received ${reviewsResponse.data.length} reviews from ${reviewsResponse.source}`);
+      
+      // Ensure reviews have the required fields
+      const processedReviews = reviewsResponse.data.map(review => ({
+        ...review,
+        // Ensure sentiment exists (fallback to rating-based sentiment if not provided)
+        sentiment: review.sentiment !== undefined ? review.sentiment : (review.rating ? (review.rating - 1) / 4 : 0.5),
+        // Ensure content exists (use text field if content is not provided)
+        content: review.content || review.text || '',
+        // Ensure rating exists
+        rating: review.rating || review.score || 0
+      }));
+      
+      setReviews(processedReviews);
     } catch (err) {
       console.error('Error fetching reviews:', err);
-      setError(prev => ({ ...prev, reviews: 'Failed to fetch reviews' }));
+      setError(prev => ({ ...prev, reviews: err.message || 'Failed to load reviews' }));
     } finally {
       setLoading(prev => ({ ...prev, reviews: false }));
     }
@@ -75,26 +124,26 @@ export default function AppDetailsPage() {
     setError(prev => ({ ...prev, analysis: null }));
     
     try {
-      // First check if analysis already exists
-      try {
-        const existingAnalysis = await getAnalysis(id);
-        if (existingAnalysis.data && !force) {
-          setAnalysis(existingAnalysis.data);
-          setLoading(prev => ({ ...prev, analysis: false }));
-          return;
+      let appId = id;
+      
+      // Check if the ID is a bundle ID (contains dots)
+      if (id.includes('.')) {
+        try {
+          console.log(`Detected bundle ID: ${id}, attempting to convert to App Store ID`);
+          appId = await convertBundleIdToAppId(id);
+          console.log(`Successfully converted bundle ID ${id} to App Store ID ${appId}`);
+        } catch (conversionError) {
+          console.error('Error converting bundle ID:', conversionError);
+          // Continue with the original ID, the backend will try to handle it
         }
-      } catch (err) {
-        // No existing analysis, continue to create new one
       }
       
-      // If no reviews, fetch them first
-      if (reviews.length === 0) {
-        await handleFetchReviews();
-      }
+      // First analyze the reviews
+      await analyzeReviews(appId, force);
       
-      // Analyze reviews
-      const response = await analyzeReviews(id, force);
-      setAnalysis(response.data);
+      // Then get the analysis results
+      const analysisResponse = await getAnalysis(appId);
+      setAnalysis(analysisResponse.data);
     } catch (err) {
       console.error('Error analyzing reviews:', err);
       setError(prev => ({ ...prev, analysis: 'Failed to analyze reviews' }));
@@ -118,11 +167,33 @@ export default function AppDetailsPage() {
 
   if (error.app) {
     return (
-      <div className="bg-red-50 text-red-700 p-4 rounded-lg">
-        {error.app}
-        <div className="mt-4">
-          <Link href="/search" className="text-blue-600 hover:underline">
-            ← Back to Search
+      <div className="space-y-6">
+        <div className="p-6 bg-[#ff453a]/10 border border-[#ff453a]/30 text-[#ff453a] rounded-xl">
+          <h2 className="text-xl font-semibold mb-2">Error</h2>
+          <p>{error.app}</p>
+          <div className="mt-4 text-sm">
+            <p className="font-medium">Possible causes:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1">
+              <li>The app ID "{id}" may be invalid or not found in the App Store</li>
+              <li>You might be using a bundle ID (e.g., com.example.app) instead of a numeric App Store ID</li>
+              <li>The backend server might be having trouble connecting to the App Store API</li>
+              <li>There might be a connection issue between the frontend and backend</li>
+            </ul>
+            <p className="mt-3 font-medium">Try using a numeric App Store ID:</p>
+            <p className="mt-1">Example: <span className="text-white">553834731</span> for Candy Crush Saga</p>
+            <p className="mt-1">You can find App IDs by searching for the app in the App Store and looking at the URL:</p>
+            <p className="mt-1 text-xs">https://apps.apple.com/us/app/candy-crush-saga/id<span className="text-white">553834731</span></p>
+          </div>
+        </div>
+        
+        <ApiDebugger />
+        
+        <div className="flex justify-center">
+          <Link 
+            href="/search" 
+            className="px-4 py-2 bg-[#3a3a3c] text-white rounded-lg hover:bg-[#48484a] transition-colors"
+          >
+            Back to Search
           </Link>
         </div>
       </div>
@@ -385,7 +456,7 @@ export default function AppDetailsPage() {
                   <select
                     value={reviewFilter}
                     onChange={(e) => handleFilterChange(e.target.value)}
-                    className="px-3 py-1 border border-gray-300 rounded-md text-sm"
+                    className="px-3 py-1 bg-[#2c2c2e] text-white border border-[#3a3a3c] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#0a84ff]"
                   >
                     <option value="all">All Reviews</option>
                     <option value="positive">Positive Only</option>
@@ -396,31 +467,45 @@ export default function AppDetailsPage() {
                   <button
                     onClick={() => handleFetchReviews(true)}
                     disabled={loading.reviews}
-                    className="px-3 py-1 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 disabled:bg-blue-400"
+                    className="px-3 py-1 bg-[#0a84ff] text-white rounded-md text-sm hover:bg-[#0a84ff]/90 disabled:bg-[#0a84ff]/50 disabled:cursor-not-allowed"
                   >
-                    {loading.reviews ? 'Fetching...' : 'Refresh'}
+                    {loading.reviews ? 'Fetching...' : reviews.length === 0 ? 'Fetch Reviews' : 'Refresh Reviews'}
                   </button>
                 </div>
               </div>
               
               {error.reviews && (
-                <div className="bg-red-50 text-red-700 p-4 rounded-lg mb-4">
-                  {error.reviews}
+                <div className="p-4 bg-[#ff453a]/10 border border-[#ff453a]/30 text-[#ff453a] rounded-lg mb-4">
+                  <p className="font-medium">Error:</p>
+                  <p>{error.reviews}</p>
+                  <p className="mt-2 text-sm">Try refreshing the page or using a different app ID.</p>
                 </div>
               )}
               
               {loading.reviews ? (
                 <div className="flex justify-center py-8">
-                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+                  <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#0a84ff] border-r-transparent align-[-0.125em]" role="status">
+                    <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                  </div>
                 </div>
               ) : reviews.length === 0 ? (
-                <div className="bg-yellow-50 p-4 rounded-lg">
-                  <p className="text-yellow-700">
-                    No reviews fetched yet. Click the "Fetch Reviews" button to get started.
-                  </p>
+                <div className="p-6 bg-[#ff9f0a]/10 border border-[#ff9f0a]/30 text-[#ff9f0a] rounded-lg text-center">
+                  <p className="font-medium">No reviews fetched yet.</p>
+                  <p className="mt-2">Click the "Fetch Reviews" button above to get started.</p>
+                  <button
+                    onClick={() => handleFetchReviews(true)}
+                    disabled={loading.reviews}
+                    className="mt-4 px-4 py-2 bg-[#0a84ff] text-white rounded-lg hover:bg-[#0a84ff]/90 disabled:bg-[#0a84ff]/50 disabled:cursor-not-allowed"
+                  >
+                    {loading.reviews ? 'Fetching...' : 'Fetch Reviews'}
+                  </button>
                 </div>
               ) : (
-                <ReviewList reviews={reviews} filter={reviewFilter} />
+                <ReviewList 
+                  reviews={reviews} 
+                  filter={reviewFilter}
+                  loading={loading.reviews}
+                />
               )}
             </div>
           )}

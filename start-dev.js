@@ -79,7 +79,12 @@ function startFrontend(backendPort) {
   console.log(`${colors.cyan}Starting frontend server...${colors.reset}`);
   
   // Set environment variable for API URL
-  const env = { ...process.env, NEXT_PUBLIC_API_URL: `http://localhost:${backendPort}/api` };
+  const env = { 
+    ...process.env, 
+    NEXT_PUBLIC_API_URL: `http://localhost:${backendPort}/api` 
+  };
+  
+  console.log(`${colors.blue}Setting API URL to: ${env.NEXT_PUBLIC_API_URL}${colors.reset}`);
   
   frontendProcess = spawn('npm', ['run', 'dev:frontend'], { 
     stdio: ['inherit', 'pipe', 'pipe'],
@@ -93,9 +98,13 @@ function startFrontend(backendPort) {
     
     // Check if Next.js server has started
     if (output.includes('- Local:')) {
+      const localUrlMatch = output.match(/- Local:\s+(http:\/\/localhost:\d+)/);
+      const frontendUrl = localUrlMatch ? localUrlMatch[1] : 'http://localhost:3000';
+      
       console.log(`${colors.green}Frontend server started${colors.reset}`);
       console.log(`\n${colors.bright}${colors.green}Both servers are now running!${colors.reset}`);
-      console.log(`${colors.cyan}You can access the application at: ${colors.bright}http://localhost:3000${colors.reset}`);
+      console.log(`${colors.cyan}You can access the application at: ${colors.bright}${frontendUrl}${colors.reset}`);
+      console.log(`${colors.cyan}Backend API is available at: ${colors.bright}http://localhost:${backendPort}/api${colors.reset}`);
       console.log(`${colors.yellow}Press Ctrl+C to stop both servers${colors.reset}\n`);
     }
   });

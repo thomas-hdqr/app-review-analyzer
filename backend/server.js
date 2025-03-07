@@ -12,7 +12,7 @@ const analysisRoutes = require('./routes/analysis');
 
 // Initialize Express app
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 const MAX_PORT_ATTEMPTS = 10;
 
 // Ensure data directories exist
@@ -33,7 +33,18 @@ function ensureDirectoriesExist() {
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+  // Allow requests from any localhost port
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    
+    // Allow any localhost or 127.0.0.1 origin
+    if (origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')) {
+      return callback(null, true);
+    }
+    
+    callback(new Error('Not allowed by CORS'));
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
@@ -62,6 +73,29 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Debug endpoint
+app.get('/api/debug', (req, res) => {
+  res.status(200).json({
+    server: {
+      uptime: process.uptime(),
+      memory: process.memoryUsage(),
+      nodeVersion: process.version,
+      pid: process.pid
+    },
+    request: {
+      headers: req.headers,
+      ip: req.ip,
+      originalUrl: req.originalUrl,
+      method: req.method
+    },
+    environment: {
+      nodeEnv: process.env.NODE_ENV,
+      port: PORT,
+      apiBaseUrl: process.env.API_BASE_URL || 'not set'
+    }
+  });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -79,8 +113,10 @@ function startServer(port, attempt = 1) {
     ensureDirectoriesExist();
   }).on('error', (err) => {
     if (err.code === 'EADDRINUSE' && attempt < MAX_PORT_ATTEMPTS) {
-      console.log(`Port ${port} is busy, trying port ${port + 1}...`);
-      startServer(port + 1, attempt + 1);
+      // Increment by 1 instead of 10 to avoid large port numbers
+      const nextPort = port + 1;
+      console.log(`Port ${port} is busy, trying port ${nextPort}...`);
+      startServer(nextPort, attempt + 1);
     } else {
       console.error('Error starting server:', err);
     }

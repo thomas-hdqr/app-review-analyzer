@@ -47,24 +47,58 @@ router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     
-    const app = await appStoreService.getAppDetails(id);
+    console.log(`Received request for app details with ID: ${id}`);
     
-    if (!app) {
-      return res.status(404).json({ 
+    if (!id || id === 'undefined') {
+      return res.status(400).json({ 
         error: true, 
-        message: 'App not found' 
+        message: 'Invalid app ID provided' 
       });
     }
     
-    res.json({
-      success: true,
-      data: app
-    });
+    try {
+      const app = await appStoreService.getAppDetails(id);
+      
+      if (!app) {
+        return res.status(404).json({ 
+          error: true, 
+          message: `App with ID ${id} not found` 
+        });
+      }
+      
+      res.json({
+        success: true,
+        data: app
+      });
+    } catch (appError) {
+      console.error(`App store service error for ${id}:`, appError);
+      
+      // Check for specific error types
+      if (appError.message && appError.message.includes('not found')) {
+        return res.status(404).json({ 
+          error: true, 
+          message: `App with ID ${id} not found in the App Store` 
+        });
+      }
+      
+      if (appError.message && appError.message.includes('timed out')) {
+        return res.status(504).json({ 
+          error: true, 
+          message: 'App Store request timed out. Please try again later.' 
+        });
+      }
+      
+      res.status(500).json({ 
+        error: true, 
+        message: 'Error retrieving app details from App Store',
+        details: appError.message
+      });
+    }
   } catch (error) {
-    console.error(`Error getting app details for ${req.params.id}:`, error);
+    console.error(`General error handling app details for ${req.params.id}:`, error);
     res.status(500).json({ 
       error: true, 
-      message: 'Error getting app details' 
+      message: 'Server error processing app details request' 
     });
   }
 });
@@ -137,6 +171,22 @@ router.get('/categories/list', async (req, res) => {
       message: 'Error getting categories' 
     });
   }
+});
+
+/**
+ * @route   GET /api/apps/test/:id
+ * @desc    Test endpoint to verify app ID handling
+ * @access  Public
+ */
+router.get('/test/:id', (req, res) => {
+  const { id } = req.params;
+  
+  res.json({
+    success: true,
+    message: 'Test endpoint working',
+    receivedId: id,
+    timestamp: new Date().toISOString()
+  });
 });
 
 module.exports = router; 

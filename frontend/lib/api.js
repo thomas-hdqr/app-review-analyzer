@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 
 /**
  * Search for apps by term or category
@@ -27,13 +27,26 @@ export async function searchApps(options) {
  * @returns {Promise<Object>} - App details
  */
 export async function getAppDetails(appId) {
-  const response = await fetch(`${API_BASE_URL}/apps/${appId}`);
-  
-  if (!response.ok) {
-    throw new Error('Error getting app details');
+  try {
+    console.log(`Fetching app details from: ${API_BASE_URL}/apps/${appId}`);
+    const response = await fetch(`${API_BASE_URL}/apps/${appId}`);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Error response: ${response.status} ${response.statusText}`, errorText);
+      
+      if (response.status === 404) {
+        throw new Error(`App with ID ${appId} not found`);
+      }
+      
+      throw new Error(`Error getting app details: ${response.status} ${response.statusText}`);
+    }
+    
+    return response.json();
+  } catch (error) {
+    console.error('Error in getAppDetails:', error);
+    throw error;
   }
-  
-  return response.json();
 }
 
 /**
@@ -72,16 +85,32 @@ export async function getCategories() {
  * @returns {Promise<Object>} - Reviews
  */
 export async function getReviews(appId, force = false) {
-  const params = new URLSearchParams();
-  if (force) params.append('force', 'true');
-  
-  const response = await fetch(`${API_BASE_URL}/reviews/${appId}?${params.toString()}`);
-  
-  if (!response.ok) {
-    throw new Error('Error getting reviews');
+  try {
+    console.log(`Fetching reviews for app ${appId}, force=${force}`);
+    
+    const params = new URLSearchParams();
+    if (force) params.append('force', 'true');
+    
+    const response = await fetch(`${API_BASE_URL}/reviews/${appId}?${params.toString()}`);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Error response: ${response.status} ${response.statusText}`, errorText);
+      
+      if (response.status === 404) {
+        throw new Error(`No reviews found for app with ID ${appId}`);
+      }
+      
+      throw new Error(`Error getting reviews: ${response.status} ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    console.log(`Successfully fetched ${data.count} reviews for app ${appId} (source: ${data.source})`);
+    return data;
+  } catch (error) {
+    console.error('Error in getReviews:', error);
+    throw error;
   }
-  
-  return response.json();
 }
 
 /**
@@ -290,8 +319,8 @@ export async function analyzeMVPOpportunity(appIds, category) {
  */
 export async function checkApiHealth() {
   try {
-    console.log('Checking API health at:', `${API_BASE_URL}/health`);
-    const response = await fetch(`${API_BASE_URL}/health`, {
+    console.log('Checking API health at:', `${API_BASE_URL.replace(/\/api$/, '')}/api/health`);
+    const response = await fetch(`${API_BASE_URL.replace(/\/api$/, '')}/api/health`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -314,13 +343,113 @@ export async function checkApiHealth() {
     
     return {
       success: true,
-      data: data
+      ...data
     };
   } catch (error) {
     console.error('API health check failed:', error);
     return {
       success: false,
-      error: error.message || 'Could not connect to API server'
+      status: 'error',
+      message: error.message || 'Could not connect to API server',
+      error: error.toString()
     };
+  }
+}
+
+/**
+ * Test app details endpoint with a specific ID
+ * @param {string} appId - App ID to test with
+ * @returns {Promise<Object>} - Test result
+ */
+export async function testAppDetails(appId) {
+  try {
+    console.log(`Testing app details endpoint with ID: ${appId}`);
+    const response = await fetch(`${API_BASE_URL}/apps/test/${appId}`);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Test failed with status: ${response.status}`, errorText);
+      throw new Error(`Test failed: ${response.status} ${response.statusText}`);
+    }
+    
+    return response.json();
+  } catch (error) {
+    console.error('Error in test endpoint:', error);
+    throw error;
+  }
+}
+
+/**
+ * Fetch categories from the API
+ * @returns {Promise<Array>} - List of categories
+ */
+export async function fetchCategories() {
+  try {
+    const response = await getCategories();
+    return response.data || [];
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return [];
+  }
+}
+
+/**
+ * Fetch trending apps from the API
+ * @param {string} category - Category ID (optional)
+ * @returns {Promise<Array>} - List of trending apps
+ */
+export async function fetchTrendingApps(category = 'all') {
+  try {
+    const options = {};
+    if (category && category !== 'all') {
+      options.category = category;
+    }
+    
+    // If no category is specified, use a popular search term
+    if (!options.category) {
+      options.term = 'popular';
+    }
+    
+    const response = await searchApps(options);
+    return response.data || [];
+  } catch (error) {
+    console.error('Error fetching trending apps:', error);
+    return [];
+  }
+}
+
+/**
+ * Convert a bundle ID to a numeric App Store ID
+ * @param {string} bundleId - Bundle ID (e.g., com.example.app)
+ * @returns {Promise<string>} - Numeric App Store ID
+ */
+export async function convertBundleIdToAppId(bundleId) {
+  try {
+    console.log(`Converting bundle ID to App Store ID: ${bundleId}`);
+    
+    // Search for the app by bundle ID
+    const searchResults = await searchApps({ term: bundleId });
+    
+    if (!searchResults.data || searchResults.data.length === 0) {
+      throw new Error(`No app found with bundle ID: ${bundleId}`);
+    }
+    
+    // Find the app with matching bundle ID
+    const matchingApp = searchResults.data.find(app => 
+      app.bundleId === bundleId || 
+      app.bundleId?.toLowerCase() === bundleId.toLowerCase()
+    );
+    
+    if (matchingApp) {
+      console.log(`Found matching app for bundle ID ${bundleId}: ${matchingApp.title} (${matchingApp.appId})`);
+      return matchingApp.appId;
+    }
+    
+    // If no exact match, return the first result as a best guess
+    console.log(`No exact match found for bundle ID ${bundleId}, using first result: ${searchResults.data[0].title} (${searchResults.data[0].appId})`);
+    return searchResults.data[0].appId;
+  } catch (error) {
+    console.error(`Error converting bundle ID to App Store ID: ${bundleId}`, error);
+    throw error;
   }
 }

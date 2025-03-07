@@ -61,6 +61,12 @@ export default function RootLayout({ children }) {
                   >
                     Insights
                   </Link>
+                  <Link 
+                    href="/debug" 
+                    className="px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-[#2c2c2e] rounded-lg transition-colors"
+                  >
+                    Debug
+                  </Link>
                 </nav>
                 
                 {/* API Status */}
