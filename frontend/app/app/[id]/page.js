@@ -215,70 +215,70 @@ export default function AppDetailsPage() {
 
   return (
     <div className="space-y-6">
-      {/* App Header */}
+        {/* App Header */}
       <div className="bg-white shadow rounded-lg p-6">
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-            <Image
+              <Image
               src={app.icon || '/placeholder-app-icon.png'}
-              alt={`${app.title} icon`}
+                alt={`${app.title} icon`}
               width={96}
               height={96}
               className="rounded-xl"
-              onError={(e) => {
-                e.target.onerror = null;
+                onError={(e) => {
+                  e.target.onerror = null;
                 e.target.src = '/placeholder-app-icon.png';
-              }}
-            />
-          </div>
-          
+                }}
+              />
+            </div>
+            
           <div className="flex-1">
             <h1 className="text-2xl font-bold">{app.title}</h1>
             <p className="text-gray-600">{app.developer}</p>
             
             <div className="flex items-center mt-2">
               <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
+                    {[...Array(5)].map((_, i) => (
+                      <svg 
+                        key={i} 
                     className={`w-5 h-5 ${i < Math.round(app.score) ? 'text-yellow-400' : 'text-gray-300'}`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+                        fill="currentColor" 
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
                 <span className="ml-2 text-gray-700">
                   {app.score.toFixed(1)} ({app.reviews.toLocaleString()} reviews)
                 </span>
               </div>
-            </div>
-            
-            <div className="mt-4 flex flex-wrap gap-2">
-              <a
-                href={app.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-              >
-                View in App Store
-              </a>
+              </div>
               
-              <button
+            <div className="mt-4 flex flex-wrap gap-2">
+                <a
+                  href={app.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                >
+                  View in App Store
+                </a>
+                
+                <button
                 onClick={() => handleFetchReviews(true)}
                 disabled={loading.reviews}
                 className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400"
               >
                 {loading.reviews ? 'Fetching...' : reviews.length > 0 ? 'Refresh Reviews' : 'Fetch Reviews'}
-              </button>
-              
-              <button
+                </button>
+                
+                <button
                 onClick={() => handleAnalyzeReviews(true)}
                 disabled={loading.analysis || reviews.length === 0}
                 className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 disabled:bg-green-400"
               >
                 {loading.analysis ? 'Analyzing...' : analysis ? 'Refresh Analysis' : 'Analyze Reviews'}
-              </button>
+                </button>
             </div>
           </div>
         </div>
@@ -309,11 +309,11 @@ export default function AppDetailsPage() {
           <div>
             <span className="block text-gray-500">Version</span>
             <span className="font-medium">{app.version || 'Unknown'}</span>
+            </div>
           </div>
         </div>
-      </div>
-      
-      {/* Tabs */}
+        
+        {/* Tabs */}
       <div className="bg-white shadow rounded-lg overflow-hidden">
         <div className="border-b border-gray-200">
           <nav className="flex -mb-px">
@@ -374,7 +374,7 @@ export default function AppDetailsPage() {
                 </div>
               ) : (
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
+                <div>
                     <h3 className="text-lg font-medium mb-3">Review Stats</h3>
                     <div className="bg-gray-50 p-4 rounded-lg">
                       <div className="flex justify-between mb-2">
@@ -394,9 +394,9 @@ export default function AppDetailsPage() {
                         }</span>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div>
+                      </div>
+                      
+                      <div>
                     <h3 className="text-lg font-medium mb-3">Analysis Status</h3>
                     <div className="bg-gray-50 p-4 rounded-lg">
                       {analysis ? (
@@ -408,16 +408,16 @@ export default function AppDetailsPage() {
                           <div className="flex justify-between mb-2">
                             <span className="text-gray-600">Positive Reviews:</span>
                             <span className="font-medium text-green-600">{analysis.sentimentAnalysis.positive}</span>
-                          </div>
+                      </div>
                           <div className="flex justify-between">
                             <span className="text-gray-600">Negative Reviews:</span>
                             <span className="font-medium text-red-600">{analysis.sentimentAnalysis.negative}</span>
-                          </div>
+                      </div>
                         </>
                       ) : (
                         <div className="text-gray-600">
                           No analysis performed yet. Click the "Analyze Reviews" button to get insights.
-                        </div>
+                    </div>
                       )}
                     </div>
                   </div>
@@ -464,13 +464,13 @@ export default function AppDetailsPage() {
                     <option value="neutral">Neutral Only</option>
                   </select>
                   
-                  <button
+                    <button
                     onClick={() => handleFetchReviews(true)}
                     disabled={loading.reviews}
                     className="px-3 py-1 bg-[#0a84ff] text-white rounded-md text-sm hover:bg-[#0a84ff]/90 disabled:bg-[#0a84ff]/50 disabled:cursor-not-allowed"
                   >
                     {loading.reviews ? 'Fetching...' : reviews.length === 0 ? 'Fetch Reviews' : 'Refresh Reviews'}
-                  </button>
+                    </button>
                 </div>
               </div>
               
@@ -516,15 +516,15 @@ export default function AppDetailsPage() {
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-semibold">Review Analysis</h2>
                 
-                <button
+                    <button
                   onClick={() => handleAnalyzeReviews(true)}
                   disabled={loading.analysis || reviews.length === 0}
                   className="px-3 py-1 bg-green-600 text-white rounded-md text-sm hover:bg-green-700 disabled:bg-green-400"
                 >
                   {loading.analysis ? 'Analyzing...' : 'Refresh Analysis'}
-                </button>
-              </div>
-              
+                    </button>
+                  </div>
+                  
               {error.analysis && (
                 <div className="bg-red-50 text-red-700 p-4 rounded-lg mb-4">
                   {error.analysis}
@@ -534,7 +534,7 @@ export default function AppDetailsPage() {
               {loading.analysis ? (
                 <div className="flex justify-center py-8">
                   <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
-                </div>
+                          </div>
               ) : !analysis ? (
                 <div className="bg-yellow-50 p-4 rounded-lg">
                   <p className="text-yellow-700">
@@ -542,7 +542,7 @@ export default function AppDetailsPage() {
                       ? 'Please fetch reviews first before analyzing.' 
                       : 'No analysis performed yet. Click the "Analyze Reviews" button to get insights.'}
                   </p>
-                </div>
+                          </div>
               ) : (
                 <div className="space-y-6">
                   <SentimentChart sentimentData={analysis.sentimentAnalysis} />
@@ -550,15 +550,15 @@ export default function AppDetailsPage() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <ThemeCloud themes={analysis.positiveThemes} type="positive" />
                     <ThemeCloud themes={analysis.negativeThemes} type="negative" />
-                  </div>
-                </div>
+                          </div>
+                        </div>
               )}
             </div>
           )}
-          
+                        
           {/* Market Gaps Tab */}
           {activeTab === 'market-gaps' && (
-            <div>
+                        <div>
               <h2 className="text-xl font-semibold mb-4">Market Gaps & Opportunities</h2>
               
               {!analysis ? (
@@ -568,7 +568,7 @@ export default function AppDetailsPage() {
                       ? 'Please fetch and analyze reviews first to identify market gaps.' 
                       : 'Please analyze reviews first to identify market gaps.'}
                   </p>
-                </div>
+                        </div>
               ) : analysis.marketGaps && analysis.marketGaps.length > 0 ? (
                 <div className="space-y-6">
                   <div className="bg-white border rounded-lg overflow-hidden">
@@ -589,23 +589,23 @@ export default function AppDetailsPage() {
                               <div className="flex items-center">
                                 <div className="flex-shrink-0 bg-red-100 text-red-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">
                                   {index + 1}
-                                </div>
+                              </div>
                                 <div className="ml-4">
                                   <h4 className="text-lg font-medium text-gray-900 capitalize">
                                     {gap.feature}
                                   </h4>
-                                  <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600">
                                     {gap.painPoint}
-                                  </p>
-                                </div>
-                              </div>
+                        </p>
+                      </div>
+                    </div>
                               <div className="flex items-center">
                                 <div className="text-center px-3">
                                   <span className="block text-sm font-medium text-gray-500">Opportunity</span>
                                   <span className="text-xl font-bold text-blue-600">{gap.opportunityScore}/10</span>
-                                </div>
-                              </div>
-                            </div>
+                  </div>
+                        </div>
+                    </div>
                           </li>
                         ))}
                       </ul>
